@@ -1,5 +1,5 @@
 //
-//  BackgroundImage.swift
+//  Utils.swift
 //  RouteMe
 //
 //  Created by Hesham Massoud on 19/05/16.
@@ -23,3 +23,14 @@ extension UIView {
         self.addSubview(imageViewBackground)
         self.sendSubviewToBack(imageViewBackground)
     }}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

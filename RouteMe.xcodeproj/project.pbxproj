@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05D36A491CF04E3600D65A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D36A481CF04E3600D65A30 /* User.swift */; };
 		05DAEE4E1CEE39FF0033AE84 /* blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4D1CEE39FF0033AE84 /* blur.jpg */; };
 		05DAEE531CEE3B390033AE84 /* bus_routeme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */; };
 		05DAEE541CEE3B390033AE84 /* city_routeme.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE501CEE3B390033AE84 /* city_routeme.jpg */; };
 		05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */; };
 		05DAEE581CEE3BC50033AE84 /* tram_routeme_5s.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */; };
-		05DAEE5A1CEE3C770033AE84 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DAEE591CEE3C770033AE84 /* BackgroundImage.swift */; };
+		05DAEE5A1CEE3C770033AE84 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DAEE591CEE3C770033AE84 /* Utils.swift */; };
 		62B1A55AA7F5D9438D1167B5 /* Pods_RouteMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E54A0AEC58BBEB4AE0A3AA5 /* Pods_RouteMe.framework */; };
 		E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023470E1B677CD3004F2DBE /* AppDelegate.swift */; };
 		E02347141B677CD3004F2DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02347121B677CD3004F2DBE /* Main.storyboard */; };
@@ -36,12 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05D36A481CF04E3600D65A30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05DAEE4D1CEE39FF0033AE84 /* blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = blur.jpg; path = Images.xcassets/blur.jpg; sourceTree = "<group>"; };
 		05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bus_routeme.jpeg; path = Images.xcassets/bus_routeme.jpeg; sourceTree = "<group>"; };
 		05DAEE501CEE3B390033AE84 /* city_routeme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = city_routeme.jpg; path = Images.xcassets/city_routeme.jpg; sourceTree = "<group>"; };
 		05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tram_routeme.jpeg; path = Images.xcassets/tram_routeme.jpeg; sourceTree = "<group>"; };
 		05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tram_routeme_5s.jpeg; path = Images.xcassets/tram_routeme_5s.jpeg; sourceTree = "<group>"; };
-		05DAEE591CEE3C770033AE84 /* BackgroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		05DAEE591CEE3C770033AE84 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1088CFE500C797330DD85800 /* Pods-RouteMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteMe/Pods-RouteMe.release.xcconfig"; sourceTree = "<group>"; };
 		9E54A0AEC58BBEB4AE0A3AA5 /* Pods_RouteMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E02347091B677CD3004F2DBE /* RouteMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05D36A471CF04E2A00D65A30 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05D36A481CF04E3600D65A30 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		981FCEC7004CA9907560CACA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +121,8 @@
 		E023470B1B677CD3004F2DBE /* RouteMe */ = {
 			isa = PBXGroup;
 			children = (
-				05DAEE591CEE3C770033AE84 /* BackgroundImage.swift */,
+				05D36A471CF04E2A00D65A30 /* Models */,
+				05DAEE591CEE3C770033AE84 /* Utils.swift */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
@@ -323,9 +334,10 @@
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
-				05DAEE5A1CEE3C770033AE84 /* BackgroundImage.swift in Sources */,
+				05DAEE5A1CEE3C770033AE84 /* Utils.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
+				05D36A491CF04E3600D65A30 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

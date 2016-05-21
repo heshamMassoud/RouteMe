@@ -26,7 +26,7 @@
                                             <constraint firstAttribute="height" constant="58" id="OHM-W1-d0d"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="26"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkg-AR-t1r">
@@ -51,7 +51,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="WIB-lU-zid" secondAttribute="centerX" constant="-1" id="0Ax-Hp-rRf"/>
                                     <constraint firstItem="EGN-dH-fMV" firstAttribute="centerX" secondItem="kkg-AR-t1r" secondAttribute="centerX" constant="-0.5" id="7ZP-Gl-k48"/>
@@ -65,7 +65,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhv-Og-HU4">
                                 <rect key="frame" x="554" y="28" width="30" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7E6-Me-KP9"/>
                                     <constraint firstAttribute="width" constant="30" id="oeH-1D-fOY"/>
@@ -203,7 +203,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="ZS5-eF-mXq" secondAttribute="centerX" id="2jb-u2-CXg"/>
                                     <constraint firstItem="eIn-wW-qg4" firstAttribute="centerX" secondItem="sr2-Qf-iN0" secondAttribute="centerX" id="4vZ-4h-wAp"/>
@@ -257,8 +257,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailField" destination="eIn-wW-qg4" id="2iB-Ee-LM1"/>
                         <outlet property="passwordField" destination="sr2-Qf-iN0" id="ZUs-kD-CYT"/>
-                        <outlet property="usernameField" destination="eIn-wW-qg4" id="mUV-vT-2bF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtc-BG-LEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,7 +279,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znj-c5-sYl">
                                 <rect key="frame" x="554" y="28" width="30" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="8CG-mT-3oa"/>
                                     <constraint firstAttribute="height" constant="30" id="GbL-gZ-psd"/>
@@ -345,7 +345,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="4IT-7M-gza" firstAttribute="top" secondItem="UOz-tS-XVp" secondAttribute="bottom" constant="23" id="1ej-Pr-CNa"/>
                                     <constraint firstItem="Jcj-sR-Vlo" firstAttribute="centerX" secondItem="XVT-DP-MPG" secondAttribute="centerX" constant="0.5" id="49v-Pa-xXf"/>
@@ -465,7 +465,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="SaJ-fS-Ohu" secondAttribute="bottom" constant="14" id="BPd-1l-nx6"/>
                                     <constraint firstItem="dpI-nj-meO" firstAttribute="top" secondItem="m6O-Ll-Byu" secondAttribute="bottom" constant="41" id="Gtb-eV-e5X"/>
