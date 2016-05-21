@@ -9,10 +9,13 @@
 import UIKit
 import Alamofire
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    @IBAction func unwindToLogInScreen(segue:UIStoryboardSegue) {
+    }
     
     @IBAction func loginAction(sender: AnyObject) {
         let email = self.emailField.text
@@ -75,15 +78,16 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground("city_routeme.jpg")
         
+        // textfields' tags are defined in the storyboard
+        emailField.delegate = self // tag 0
+        passwordField.delegate = self // tag 1
+        
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func unwindToLogInScreen(segue:UIStoryboardSegue) {
     }
     
     /*

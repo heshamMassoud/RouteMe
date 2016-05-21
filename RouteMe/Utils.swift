@@ -67,5 +67,15 @@ extension UIViewController {
             self.presentViewController(viewController, animated: true, completion: nil)
         })
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let nextFieldTag = textField.tag + 1
+        if let nextViewResponder: UIResponder! = self.view.viewWithTag(nextFieldTag) {
+            nextViewResponder.becomeFirstResponder()
+        } else {
+            self.view.endEditing(true)
+        }
+        return false
+    }
 }
 

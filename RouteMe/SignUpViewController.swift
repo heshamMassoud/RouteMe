@@ -9,12 +9,26 @@
 import UIKit
 import Alamofire
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
+
+
+    @IBAction func signUpAction(sender: AnyObject) {
+        let email = self.emailField.text
+        let username = self.usernameField.text
+        let password = self.passwordField.text
+        let confirmPassword = self.confirmPasswordField.text
+        
+        let isFormValid = validateSignUpForm(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
+        if isFormValid {
+            createUserRequest(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
+        }
+    }
+
     
     func validateSignUpForm(email: String, username: String, password: String, confirmPassword: String) -> Bool {
         let isValidEmail = Helper.validateEmail(email)
@@ -65,22 +79,17 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func signUpAction(sender: AnyObject) {
-        let email = self.emailField.text
-        let username = self.usernameField.text
-        let password = self.passwordField.text
-        let confirmPassword = self.confirmPasswordField.text
-        
-        let isFormValid = validateSignUpForm(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
-        if isFormValid {
-            createUserRequest(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground("seat_routeme.JPG")
+        
+        // text fields' tags are defined in the storyboard
+        emailField.delegate = self // tag 0
+        usernameField.delegate = self // tag 1
+        passwordField.delegate = self // tag 2
+        confirmPasswordField.delegate = self // tag 3
 
         // Do any additional setup after loading the view.
     }
