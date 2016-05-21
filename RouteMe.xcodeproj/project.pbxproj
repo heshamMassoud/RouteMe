@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFCC531CF07C1C00A3D40A /* Helpers.swift */; };
 		05D36A491CF04E3600D65A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D36A481CF04E3600D65A30 /* User.swift */; };
+		05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */; };
+		05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */; };
 		05DAEE4E1CEE39FF0033AE84 /* blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4D1CEE39FF0033AE84 /* blur.jpg */; };
 		05DAEE531CEE3B390033AE84 /* bus_routeme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */; };
 		05DAEE541CEE3B390033AE84 /* city_routeme.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE501CEE3B390033AE84 /* city_routeme.jpg */; };
@@ -37,7 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05AFCC531CF07C1C00A3D40A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		05D36A481CF04E3600D65A30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seat_routeme.png; path = Images.xcassets/seat_routeme.png; sourceTree = "<group>"; };
+		05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = seat_routeme.JPG; path = ../../Downloads/seat_routeme.JPG; sourceTree = "<group>"; };
 		05DAEE4D1CEE39FF0033AE84 /* blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = blur.jpg; path = Images.xcassets/blur.jpg; sourceTree = "<group>"; };
 		05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bus_routeme.jpeg; path = Images.xcassets/bus_routeme.jpeg; sourceTree = "<group>"; };
 		05DAEE501CEE3B390033AE84 /* city_routeme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = city_routeme.jpg; path = Images.xcassets/city_routeme.jpg; sourceTree = "<group>"; };
@@ -81,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05AFCC521CF07C0B00A3D40A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05AFCC531CF07C1C00A3D40A /* Helpers.swift */,
+				05DAEE591CEE3C770033AE84 /* Utils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		05D36A471CF04E2A00D65A30 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +136,8 @@
 		E023470B1B677CD3004F2DBE /* RouteMe */ = {
 			isa = PBXGroup;
 			children = (
+				05AFCC521CF07C0B00A3D40A /* Utils */,
 				05D36A471CF04E2A00D65A30 /* Models */,
-				05DAEE591CEE3C770033AE84 /* Utils.swift */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
 				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
@@ -134,6 +149,8 @@
 				05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */,
 				05DAEE501CEE3B390033AE84 /* city_routeme.jpg */,
 				05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */,
+				05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */,
+				05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */,
 				05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */,
 				05DAEE4D1CEE39FF0033AE84 /* blur.jpg */,
 				E023470C1B677CD3004F2DBE /* Supporting Files */,
@@ -260,9 +277,11 @@
 			files = (
 				05DAEE581CEE3BC50033AE84 /* tram_routeme_5s.jpeg in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
+				05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */,
 				05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				05DAEE541CEE3B390033AE84 /* city_routeme.jpg in Resources */,
+				05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */,
 				05DAEE4E1CEE39FF0033AE84 /* blur.jpg in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				05DAEE531CEE3B390033AE84 /* bus_routeme.jpeg in Resources */,
@@ -334,6 +353,7 @@
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
+				05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */,
 				05DAEE5A1CEE3C770033AE84 /* Utils.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,

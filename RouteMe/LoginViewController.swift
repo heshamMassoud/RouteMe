@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     }
     
     func authenticateUser(email: String, password: String) {
-        let spinnerFrame: UIView = startASpinner()
+        let spinnerFrame: UIView = self.view.startASpinner()
         let parameters = ["email": email, "password": password]
         Alamofire.request(
             .POST,
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
             .responseJSON
             {
                 response in
-                self.stopSpinner(spinnerFrame)
+                self.view.stopSpinner(spinnerFrame)
                 switch response.result {
                     case .Success(let JSON):
                         let HTTP_STATUS_CODE_FOUND: Int = 302
@@ -45,37 +45,20 @@ class LoginViewController: UIViewController {
                             let loggedInUsername = responseJSON["username"] as! String
                             let loggedInEmail = responseJSON["email"] as! String
                             let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
-                            self.loginUser(user)
+                            Helper.loginUser(user, viewController: self)
                         } else {
-                            self.alertAuthenticationError(responseJSON)
+                            Helper.alertRequestError(responseJSON, viewController: self)
                     }
                     case .Failure(let error):
                         self.alert("Fatal Error", message: "Request failed with error: \(error)", buttonText: "OK")
                 }
         }
     }
-    
-    func startASpinner() -> UIView {
-        var messageFrame = UIView()
-        var activityIndicator = UIActivityIndicatorView()
-        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 25, y: view.frame.midY - 25 , width: 50, height: 50))
-        messageFrame.layer.cornerRadius = 15
-        messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityIndicator.startAnimating()
-        messageFrame.addSubview(activityIndicator)
-        view.addSubview(messageFrame)
-        return messageFrame
-    }
-    
-    func stopSpinner(spinnerFrame: UIView) {
-        spinnerFrame.removeFromSuperview()
-    }
+
     
     func validateLoginForm(email: String, password: String) -> Bool {
-        let isValidEmail = validateEmailField(email)
-        let isValidPassword = validatePasswordField(password)
+        let isValidEmail = Helper.validateEmail(email)
+        let isValidPassword = Helper.validatePassword(password)
         if !isValidEmail {
             alert("E-mail", message: "Please enter a valid e-mail address.", buttonText: "OK")
             return false
@@ -85,54 +68,7 @@ class LoginViewController: UIViewController {
         }
         return true
     }
-    
-    func validateEmailField(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailEvaluator = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailEvaluator.evaluateWithObject(email)
-    }
-    
-    func validatePasswordField(password: String) -> Bool {
-        return password.characters.count > 1
-    }
 
-    func alert(title: String, message: String, buttonText: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert);
-        let alertButton = UIAlertAction(title: buttonText, style: UIAlertActionStyle.Default, handler: {(actionTarget: UIAlertAction) in })
-        alert.addAction(alertButton)
-        showViewController(alert, sender: self);
-    }
-    
-
-    func loginUser(user: User) {
-        self.rememberUser(user)
-        self.redirectToMainView()
-    }
-    
-    func rememberUser(user: User) {
-        let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
-        if hasLoginKey == false {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-            NSUserDefaults.standardUserDefaults().setValue(user.id, forKey: "loggedInId")
-            NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInUsername")
-            NSUserDefaults.standardUserDefaults().setValue(user.email, forKey: "loggedInEmail")
-        }
-    }
-    
-    func redirectToMainView() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
-            self.presentViewController(viewController, animated: true, completion: nil)
-        })
-    }
-    
-    func alertAuthenticationError(responseJSON: NSDictionary) {
-        let AUTHENTICATION_FIELD_ERROR_INDEX = 0
-        let AUTHENTICATION_FIELD_ERROR_ENTRY = responseJSON["fieldErrors"]![AUTHENTICATION_FIELD_ERROR_INDEX] as AnyObject
-        let errorMessage = AUTHENTICATION_FIELD_ERROR_ENTRY["message"] as! String
-        let errorField = AUTHENTICATION_FIELD_ERROR_ENTRY["field"] as! String
-        self.alert(errorField, message: errorMessage, buttonText: "OK")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
