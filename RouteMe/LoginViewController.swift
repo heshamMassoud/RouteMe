@@ -41,8 +41,11 @@ class LoginViewController: UIViewController {
                         let statusCode = (response.response?.statusCode)!
                         let responseJSON = JSON as! NSDictionary
                         if (statusCode == HTTP_STATUS_CODE_FOUND) {
+                            let loggedInId = responseJSON["id"] as! String
                             let loggedInUsername = responseJSON["username"] as! String
-                            self.loginUser(loggedInUsername)
+                            let loggedInEmail = responseJSON["email"] as! String
+                            let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+                            self.loginUser(user)
                         } else {
                             self.alertAuthenticationError(responseJSON)
                     }
@@ -101,16 +104,18 @@ class LoginViewController: UIViewController {
     }
     
 
-    func loginUser(username: String) {
-        self.rememberUser(username)
+    func loginUser(user: User) {
+        self.rememberUser(user)
         self.redirectToMainView()
     }
     
-    func rememberUser(username: String) {
+    func rememberUser(user: User) {
         let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
         if hasLoginKey == false {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-            NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+            NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInId")
+            NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInUsername")
+            NSUserDefaults.standardUserDefaults().setValue(user.email, forKey: "loggedInEmail")
         }
     }
     
