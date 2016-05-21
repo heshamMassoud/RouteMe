@@ -14,78 +14,73 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPasswordField: UITextField!
     
-    @IBAction func signUpAction(sender: AnyObject) {
-        var username = self.usernameField.text
-        var password = self.passwordField.text
-        var email = self.emailField.text
-        var finalEmail = email?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        // Validate the text fields
-        if username?.characters.count < 5 {
-            var alert = UIAlertView(title: "Invalid", message: "Username must be greater than 5 characters", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-            
-        } else if password?.characters.count < 8 {
-            var alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-            
-        } else if email?.characters.count < 8 {
-            var alert = UIAlertView(title: "Invalid", message: "Please enter a valid email address", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-            
-        } else {
-            // Run a spinner to show a task in progress
-            var spinner: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
-            spinner.startAnimating()
-            let parameters = ["username": username!, "email": email!, "password": password!, "confirmationPassword": password!]
-            
-            Alamofire.request(.POST, "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/", parameters: parameters, encoding:.JSON).responseJSON
-                { response in switch response.result {
-                case .Success(let JSON):
-                    print("Success with JSON: \(JSON)")
-                    spinner.stopAnimating()
-                    let statusCode = (response.response?.statusCode)!
-                    let response = JSON as! NSDictionary
-                    if (statusCode == 201) {
-                        let loggedInUsername = response["username"] as! String
-                        self.loginUser(loggedInUsername)
-                    } else {
-                        let errorMessage = response["message"] as! String
-                        let errorField = response["field"] as! String
-                        UIAlertView(title: errorField, message: errorMessage, delegate: self, cancelButtonTitle: "OK").show()
+    func validateSignUpForm(email: String, username: String, password: String, confirmPassword: String) -> Bool {
+        let isValidEmail = Helper.validateEmail(email)
+        let isValidPassword = Helper.validatePassword(password)
+        let passwordsMatch = Helper.passwordsMatch(password, confirmPassword: confirmPassword)
+        if !isValidEmail {
+            alert("E-mail", message: "Please enter a valid e-mail address.", buttonText: "OK")
+            return false
+        } else if !isValidPassword {
+            alert("Password", message: "Password must be greater than 1 character", buttonText: "OK")
+            return false
+        } else if !passwordsMatch {
+            alert("Confirm Password", message: "Passwords don't match", buttonText: "OK")
+            return false
+        }
+        return true
+    }
+    
+    func createUserRequest(email: String, username: String, password: String, confirmPassword: String) {
+        let spinnerFrame: UIView = self.view.startASpinner()
+        let parameters = ["username": username, "email": email, "password": password, "confirmationPassword": password]
+        Alamofire.request(
+            .POST,
+            "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/",
+            parameters: parameters,
+            encoding:.JSON)
+            .responseJSON
+            {
+                response in
+                self.view.stopSpinner(spinnerFrame)
+                switch response.result {
+                    case .Success(let JSON):
+                        let HTTP_STATUS_CODE_CREATED: Int = 201
+                        let statusCode = (response.response?.statusCode)!
+                        let responseJSON = JSON as! NSDictionary
+                        if (statusCode == HTTP_STATUS_CODE_CREATED) {
+                            let loggedInId = responseJSON["id"] as! String
+                            let loggedInUsername = responseJSON["username"] as! String
+                            let loggedInEmail = responseJSON["email"] as! String
+                            let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+                            Helper.loginUser(user, viewController: self)
+                        } else {
+                            Helper.alertRequestError(responseJSON, viewController: self)
                     }
                 case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                    }
-            }
+                    self.alert("Fatal Error", message: "Request failed with error: \(error)", buttonText: "OK")
+                }
         }
-
     }
     
-    func loginUser(username: String) {
-        self.rememberUser(username)
-        self.redirectToMainView()
-    }
-    
-    func redirectToMainView() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Home")
-            self.presentViewController(viewController, animated: true, completion: nil)
-        })
-    }
-    
-    func rememberUser(username: String) {
-        let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
-        if hasLoginKey == false {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-            NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+    @IBAction func signUpAction(sender: AnyObject) {
+        let email = self.emailField.text
+        let username = self.usernameField.text
+        let password = self.passwordField.text
+        let confirmPassword = self.confirmPasswordField.text
+        
+        let isFormValid = validateSignUpForm(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
+        if isFormValid {
+            createUserRequest(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.view.addBackground("tram_routeme.jpeg")
+        self.view.addBackground("seat_routeme.JPG")
 
         // Do any additional setup after loading the view.
     }
