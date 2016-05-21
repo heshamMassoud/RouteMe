@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
         let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
         if hasLoginKey == false {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-            NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInId")
+            NSUserDefaults.standardUserDefaults().setValue(user.id, forKey: "loggedInId")
             NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInUsername")
             NSUserDefaults.standardUserDefaults().setValue(user.email, forKey: "loggedInEmail")
         }
