@@ -14,22 +14,15 @@ class HomeViewController: UIViewController {
     
     @IBAction func logoutAction(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
-        redirectToLoginScreen()
+        Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: true)
         
     }
 
     override func viewWillAppear(animated: Bool) {
         let isLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
         if (!isLoggedIn) {
-            redirectToLoginScreen()
+            Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: false)
         }
-    }
-
-    func redirectToLoginScreen() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-            self.presentViewController(viewController, animated: true, completion: nil)
-        })
     }
 
     override func viewDidLoad() {
