@@ -34,7 +34,7 @@ class Helper{
 
     static func loginUser(user: User, viewController: UIViewController) {
         rememberUser(user)
-        redirectToViewController(viewController, targetViewControllerId: "Home")
+        redirectToViewController(viewController, targetViewControllerId: "Home", animated: true)
     }
 
     static func rememberUser(user: User) {
@@ -47,10 +47,10 @@ class Helper{
         }
     }
 
-    static func redirectToViewController(viewController: UIViewController, targetViewControllerId: String) {
+    static func redirectToViewController(viewController: UIViewController, targetViewControllerId: String, animated: Bool) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             let targetViewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(targetViewControllerId)
-            viewController.presentViewController(targetViewController, animated: true, completion: nil)
+            viewController.presentViewController(targetViewController, animated: animated, completion: nil)
         })
     }
 
