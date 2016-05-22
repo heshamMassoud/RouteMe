@@ -203,7 +203,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fF4-aH-hIA">
-                                <rect key="frame" x="272.5" y="427" width="55" height="33"/>
+                                <rect key="frame" x="273" y="427" width="55" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Jmi-jP-T9j"/>
                                 </constraints>
@@ -247,7 +247,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znj-c5-sYl">
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znj-c5-sYl">
                                 <rect key="frame" x="554" y="28" width="30" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -255,7 +255,9 @@
                                     <constraint firstAttribute="height" constant="30" id="GbL-gZ-psd"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="close"/>
+                                <state key="normal" image="close">
+                                    <color key="titleColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="15"/>
@@ -366,6 +368,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="znj-c5-sYl" id="Y5A-HC-RWY"/>
                         <outlet property="confirmPasswordField" destination="oiZ-md-Pwt" id="Tpk-nf-cqk"/>
                         <outlet property="emailField" destination="UOz-tS-XVp" id="r3C-yY-YxL"/>
                         <outlet property="passwordField" destination="Jcj-sR-Vlo" id="rQj-sg-Mnt"/>

@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordField: UITextField!
     var keyboardHeight: CGFloat = 0.0
     
+    @IBOutlet weak var closeButton: UIButton!
 
 
     @IBAction func signUpAction(sender: AnyObject) {
@@ -100,6 +101,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         setTextFieldsDelegates()
         setTextFieldsBottomBorders()
+        closeButton.backgroundColor = UIColor(white: 1, alpha: 0)
         
         // Do any additional setup after loading the view.
     }
