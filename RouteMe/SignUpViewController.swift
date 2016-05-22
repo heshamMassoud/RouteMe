@@ -15,6 +15,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
+    var keyboardHeight: CGFloat = 0.0
+    
 
 
     @IBAction func signUpAction(sender: AnyObject) {
@@ -78,18 +80,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
         }
     }
-    
+
+    func keyboardWillShow(notification: NSNotification) {
+        self.keyboardHeight = Helper.getKeyboardHeight(notification)
+        self.view.window?.frame.origin.y = -0.45 * keyboardHeight
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y += 0.45 * keyboardHeight
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground("seat_routeme.JPG")
+        registerForKeyboardNotifications()
+        
         setTextFieldsDelegates()
         setTextFieldsBottomBorders()
         
         // Do any additional setup after loading the view.
     }
-    
+
     func setTextFieldsDelegates() {
         // text fields' tags are defined in the storyboard
         emailField.delegate = self // tag 0
@@ -104,13 +118,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         Helper.setTextFieldBottomBorder(passwordField)
         Helper.setTextFieldBottomBorder(confirmPasswordField)
     }
+
+    override func viewDidDisappear(animated: Bool) {
+        deregisterFromKeyboardNotifications()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
