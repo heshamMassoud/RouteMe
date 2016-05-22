@@ -54,5 +54,12 @@ class Helper{
         })
     }
     
+    static func setTextFieldBottomBorder(textField: UITextField) {
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRectMake(0.0, textField.frame.height - 0.5, textField.frame.width, 0.5)
+        bottomLine.backgroundColor = UIColor.grayColor().CGColor
+        textField.borderStyle = UITextBorderStyle.None
+        textField.layer.addSublayer(bottomLine)
+    }
     
 }

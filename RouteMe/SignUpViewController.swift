@@ -84,14 +84,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground("seat_routeme.JPG")
+        setTextFieldsDelegates()
+        setTextFieldsBottomBorders()
         
+        // Do any additional setup after loading the view.
+    }
+    
+    func setTextFieldsDelegates() {
         // text fields' tags are defined in the storyboard
         emailField.delegate = self // tag 0
         usernameField.delegate = self // tag 1
         passwordField.delegate = self // tag 2
         confirmPasswordField.delegate = self // tag 3
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func setTextFieldsBottomBorders() {
+        Helper.setTextFieldBottomBorder(emailField)
+        Helper.setTextFieldBottomBorder(usernameField)
+        Helper.setTextFieldBottomBorder(passwordField)
+        Helper.setTextFieldBottomBorder(confirmPasswordField)
+    }
     }
 
     override func didReceiveMemoryWarning() {

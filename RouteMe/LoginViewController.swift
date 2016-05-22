@@ -78,11 +78,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground("city_routeme.jpg")
         
+        
+        setTextFieldDelegates()
+        setTextFieldsBottomBorders()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    func setTextFieldDelegates() {
         // textfields' tags are defined in the storyboard
         emailField.delegate = self // tag 0
         passwordField.delegate = self // tag 1
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    func setTextFieldsBottomBorders() {
+        Helper.setTextFieldBottomBorder(emailField)
+        Helper.setTextFieldBottomBorder(passwordField)
     }
     
     override func didReceiveMemoryWarning() {
