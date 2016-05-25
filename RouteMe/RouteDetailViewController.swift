@@ -80,9 +80,21 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
+    
+    func clearCellContents(cell: UITableViewCell) {
+        for view in cell.subviews {
+            if let label = view as? UILabel {
+                label.removeFromSuperview()
+            }
+            if let image = view as? UIImageView {
+                image.removeFromSuperview()
+            }
+        }
+    }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        clearCellContents(cell)
         let StepSummaryLabel = UILabel()
         StepSummaryLabel.translatesAutoresizingMaskIntoConstraints = false
         StepSummaryLabel.text = "00:47 AM- 00:50 AM"
