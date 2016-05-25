@@ -95,42 +95,71 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         clearCellContents(cell)
+        
+        let currentRouteStep = route.steps[indexPath.row]
+        let currentRouteStepTransportationMode = currentRouteStep["transportationMode"] as! String
+        let currentRouteStepTransportationModeImagePath = Route.vehicleNamingMap[currentRouteStepTransportationMode]
+        
         let StepSummaryLabel = UILabel()
         StepSummaryLabel.translatesAutoresizingMaskIntoConstraints = false
-        StepSummaryLabel.text = "00:47 AM- 00:50 AM"
         StepSummaryLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 15)!
         cell.addSubview(StepSummaryLabel)
         StepSummaryLabel.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 14).active = true
         StepSummaryLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
+        StepSummaryLabel.trailingAnchor.constraintEqualToAnchor(cell.trailingAnchor, constant: 14).active = true
         
-        let stationsLabel = UILabel()
-        stationsLabel.translatesAutoresizingMaskIntoConstraints = false
-        stationsLabel.text = "Münchner Freiheit - Marienplatz"
-        stationsLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 15)!
-        cell.addSubview(stationsLabel)
-        stationsLabel.topAnchor.constraintEqualToAnchor(StepSummaryLabel.bottomAnchor, constant: 7).active = true
-        stationsLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
-        
-        
-        let vehicleImage = UIImage(named: "bus.png")
+        let vehicleImage = UIImage(named: currentRouteStepTransportationModeImagePath!)
         let vehicleImageView = UIImageView(image: vehicleImage!)
         cell.addSubview(vehicleImageView)
         vehicleImageView.translatesAutoresizingMaskIntoConstraints = false
-        vehicleImageView.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
         vehicleImageView.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
         vehicleImageView.widthAnchor.constraintEqualToConstant(28).active = true
         vehicleImageView.heightAnchor.constraintEqualToConstant(28).active = true
         
         let headsignLabel = UILabel()
         headsignLabel.translatesAutoresizingMaskIntoConstraints = false
-        headsignLabel.text = "(Klinikium Großhadern)"
         headsignLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 15)!
         cell.addSubview(headsignLabel)
-        headsignLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 17).active=true
         headsignLabel.leadingAnchor.constraintEqualToAnchor(vehicleImageView.trailingAnchor, constant: 4).active = true
         
-        
-        
+        if route.isTransit {
+            let stationsLabel = UILabel()
+            stationsLabel.translatesAutoresizingMaskIntoConstraints = false
+            stationsLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 15)!
+            cell.addSubview(stationsLabel)
+            stationsLabel.topAnchor.constraintEqualToAnchor(StepSummaryLabel.bottomAnchor, constant: 7).active = true
+            stationsLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
+            
+            
+            vehicleImageView.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
+            headsignLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 17).active=true
+            
+            StepSummaryLabel.text = route.summary
+            stationsLabel.text = "Münchner Freiheit - Marienplatz"
+            headsignLabel.text = "to Klinikium Großhadern"
+        } else {
+            
+            vehicleImageView.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -10.5).active=true
+            headsignLabel.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -14).active=true
+            
+            let currentRouteStepDistance = currentRouteStep["distance"] as! String
+            var currentRouteStepHTMLInstruction = currentRouteStep["htmlIntruction"] as! String
+            currentRouteStepHTMLInstruction = "<span style='font-family: HelveticaNeue-Thin !important; font-size: 15px'>\(currentRouteStepHTMLInstruction)"
+            currentRouteStepHTMLInstruction = currentRouteStepHTMLInstruction.stringByReplacingOccurrencesOfString("<b>", withString: "<span style='font-family: HelveticaNeue-Light !important; font-size: 15px'>")
+            currentRouteStepHTMLInstruction = currentRouteStepHTMLInstruction.stringByReplacingOccurrencesOfString("</b>", withString: "</span>")
+            currentRouteStepHTMLInstruction = "\(currentRouteStepHTMLInstruction)</span>"
+            //let fontAttribute = [ NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 15)! ]
+            let attrStr = try! NSMutableAttributedString(
+                data: currentRouteStepHTMLInstruction.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
+                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
+                documentAttributes: nil)
+            //let range = NSMakeRange(0, attrStr.length)
+            //attrStr.addAttributes(fontAttribute, range: range)
+            StepSummaryLabel.attributedText = attrStr
+            StepSummaryLabel.numberOfLines = 2
+            //stationsLabel.attributedText = attrStr
+            headsignLabel.text = currentRouteStepDistance
+        }
         return cell
     }
 }
