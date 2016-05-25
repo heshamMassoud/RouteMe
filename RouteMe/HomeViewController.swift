@@ -26,6 +26,11 @@ class HomeViewController: UIViewController {
             Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: false)
         }
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "house-tab"), tag: 1)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

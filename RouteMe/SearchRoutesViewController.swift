@@ -34,13 +34,18 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     var isEditingStart: Bool!
     var autocompleteResultsArray = [String]()
     var searchResultsArray = [Route]()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        tabBarItem = UITabBarItem(title: "Find Routes", image: UIImage(named: "bus-tab"), tag: 2)
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         searchResultController = SearchResultsController()
         searchResultController.delegate = self
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         routeResultsTableView.delegate = self

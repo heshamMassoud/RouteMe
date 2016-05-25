@@ -17,6 +17,10 @@
 		052ADDB71CF60AFE00DDDB4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ADDB61CF60AFE00DDDB4A /* Constants.swift */; };
 		052ADDC41CF6335D00DDDB4A /* hourglass.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDC21CF6335D00DDDB4A /* hourglass.png */; };
 		052ADDC51CF6335D00DDDB4A /* onetrain.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDC31CF6335D00DDDB4A /* onetrain.png */; };
+		052ADDD21CF65DD700DDDB4A /* tab-bus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD01CF65DD700DDDB4A /* tab-bus@2x.png */; };
+		052ADDD31CF65DD700DDDB4A /* tab-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD11CF65DD700DDDB4A /* tab-house@2x.png */; };
+		052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */; };
+		052ADDD71CF6608B00DDDB4A /* house-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */; };
 		055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */; };
 		055D64EA1CF23C6C009008AE /* TravelModePreferenceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */; };
 		055D64F41CF252D7009008AE /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64ED1CF252D7009008AE /* bike.png */; };
@@ -72,6 +76,10 @@
 		052ADDB61CF60AFE00DDDB4A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		052ADDC21CF6335D00DDDB4A /* hourglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hourglass.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/hourglass.png"; sourceTree = "<group>"; };
 		052ADDC31CF6335D00DDDB4A /* onetrain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onetrain.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/onetrain.png"; sourceTree = "<group>"; };
+		052ADDD01CF65DD700DDDB4A /* tab-bus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-bus@2x.png"; path = "../../Downloads/tab-bus@2x.png"; sourceTree = "<group>"; };
+		052ADDD11CF65DD700DDDB4A /* tab-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-house@2x.png"; path = "../../Downloads/tab-house@2x.png"; sourceTree = "<group>"; };
+		052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bus-tab@2x.png"; path = "../../Downloads/bus-tab@2x.png"; sourceTree = "<group>"; };
+		052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "house-tab@2x.png"; path = "../../Downloads/house-tab@2x.png"; sourceTree = "<group>"; };
 		055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewController.swift; sourceTree = "<group>"; };
 		055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewCell.swift; sourceTree = "<group>"; };
 		055D64ED1CF252D7009008AE /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bike.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/bike.png"; sourceTree = "<group>"; };
@@ -215,6 +223,10 @@
 		052ADDC11CF61C7000DDDB4A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				052ADDD01CF65DD700DDDB4A /* tab-bus@2x.png */,
+				052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */,
+				052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */,
+				052ADDD11CF65DD700DDDB4A /* tab-house@2x.png */,
 				05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */,
 				05DAEE501CEE3B390033AE84 /* city_routeme.jpg */,
 				05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */,
@@ -426,11 +438,14 @@
 				052ADDC41CF6335D00DDDB4A /* hourglass.png in Resources */,
 				0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
+				052ADDD21CF65DD700DDDB4A /* tab-bus@2x.png in Resources */,
 				05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */,
 				05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */,
 				05168E751CF2705E0069AD0E /* checkButton.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
 				055D64F61CF252D7009008AE /* car.png in Resources */,
+				052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */,
+				052ADDD31CF65DD700DDDB4A /* tab-house@2x.png in Resources */,
 				05DAEE541CEE3B390033AE84 /* city_routeme.jpg in Resources */,
 				05168E741CF2705E0069AD0E /* xButton.png in Resources */,
 				05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */,
@@ -439,6 +454,7 @@
 				055D64F91CF252D7009008AE /* ubahn.png in Resources */,
 				0566D0501CF3015000ECF9A7 /* leastChange.png in Resources */,
 				05DAEE4E1CEE39FF0033AE84 /* blur.jpg in Resources */,
+				052ADDD71CF6608B00DDDB4A /* house-tab@2x.png in Resources */,
 				055D64F81CF252D7009008AE /* tram.png in Resources */,
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				0566D04D1CF3007600ECF9A7 /* leastChanges.png in Resources */,

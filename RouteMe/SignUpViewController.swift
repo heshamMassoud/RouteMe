@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             let loggedInUsername = responseJSON["username"] as! String
                             let loggedInEmail = responseJSON["email"] as! String
                             let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
-                            Helper.loginUser(user, viewController: self)
+                            Helper.loginUserAndAskForPreferences(user, viewController: self)
                         } else {
                             Helper.alertRequestError(responseJSON, viewController: self)
                     }
