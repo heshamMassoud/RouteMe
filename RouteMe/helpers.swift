@@ -34,7 +34,7 @@ class Helper{
 
     static func loginUser(user: User, viewController: UIViewController) {
         rememberUser(user)
-        redirectToViewController(viewController, targetViewControllerId: "PreferencesNav", animated: true)
+        redirectToViewController(viewController, targetViewControllerId: "tabBarController", animated: true)
     }
 
     static func rememberUser(user: User) {
