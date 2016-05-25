@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InsertAddressOnTextfield{
-    func InsertAddress(address: String, isStart: Bool)
+    func insertAddress(address: String, isStart: Bool)
 }
 
 class SearchResultsController: UITableViewController {
@@ -51,7 +51,7 @@ class SearchResultsController: UITableViewController {
                             didSelectRowAtIndexPath indexPath: NSIndexPath){
         self.dismissViewControllerAnimated(true, completion: nil)
         let address: String = self.autocompleteResults[indexPath.row]
-        self.delegate.InsertAddress(address, isStart: isEditingStartPoint)
+        self.delegate.insertAddress(address, isStart: isEditingStartPoint)
     }
 
     func reloadDataWithArray(array:[String], isStart: Bool){

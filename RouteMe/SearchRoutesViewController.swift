@@ -53,6 +53,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         setTextFieldsBottomBorders()
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         styleSearchFieldsText()
+        self.navigationController?.navigationBar.hidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -136,7 +137,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         }
     }
     
-    func InsertAddress(address: String, isStart: Bool) {
+    func insertAddress(address: String, isStart: Bool) {
         if isStart {
             startPointField.text = address
         } else {
