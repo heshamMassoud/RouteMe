@@ -28,7 +28,6 @@
 		0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04C1CF3007600ECF9A7 /* leastTime.png */; };
 		0566D0501CF3015000ECF9A7 /* leastChange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04F1CF3015000ECF9A7 /* leastChange.png */; };
 		0566D0521CF3232600ECF9A7 /* SearchRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */; };
-		0566D0541CF3258400ECF9A7 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0566D0531CF3258400ECF9A7 /* GooglePlacesAutocomplete.swift */; };
 		05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFCC531CF07C1C00A3D40A /* Helpers.swift */; };
 		05D36A491CF04E3600D65A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D36A481CF04E3600D65A30 /* User.swift */; };
 		05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */; };
@@ -83,7 +82,6 @@
 		0566D04C1CF3007600ECF9A7 /* leastTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastTime.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastTime.png"; sourceTree = "<group>"; };
 		0566D04F1CF3015000ECF9A7 /* leastChange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastChange.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastChange.png"; sourceTree = "<group>"; };
 		0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoutesViewController.swift; sourceTree = "<group>"; };
-		0566D0531CF3258400ECF9A7 /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
 		05AFCC531CF07C1C00A3D40A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		05D36A481CF04E3600D65A30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seat_routeme.png; path = Images.xcassets/seat_routeme.png; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */,
 				052ADDAA1CF365B200DDDB4A /* SearchResultsController.swift */,
 				0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */,
-				0566D0531CF3258400ECF9A7 /* GooglePlacesAutocomplete.swift */,
 				05168E701CF26EDB0069AD0E /* RouteTypePreferenceViewController.swift */,
 				055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */,
 				055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */,
@@ -437,7 +434,6 @@
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */,
 				05DAEE5A1CEE3C770033AE84 /* Utils.swift in Sources */,
-				0566D0541CF3258400ECF9A7 /* GooglePlacesAutocomplete.swift in Sources */,
 				E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */,
 				0566D0521CF3232600ECF9A7 /* SearchRoutesViewController.swift in Sources */,
 				E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */,
