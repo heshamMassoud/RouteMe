@@ -14,6 +14,7 @@
 		052ADDAD1CF3AFA400DDDB4A /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ADDAC1CF3AFA400DDDB4A /* Route.swift */; };
 		052ADDAF1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */; };
 		052ADDB51CF4B2C300DDDB4A /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ADDB41CF4B2C300DDDB4A /* RouteDetailViewController.swift */; };
+		052ADDB71CF60AFE00DDDB4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052ADDB61CF60AFE00DDDB4A /* Constants.swift */; };
 		055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */; };
 		055D64EA1CF23C6C009008AE /* TravelModePreferenceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */; };
 		055D64F41CF252D7009008AE /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64ED1CF252D7009008AE /* bike.png */; };
@@ -23,7 +24,6 @@
 		055D64F81CF252D7009008AE /* tram.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64F11CF252D7009008AE /* tram.png */; };
 		055D64F91CF252D7009008AE /* ubahn.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64F21CF252D7009008AE /* ubahn.png */; };
 		055D64FA1CF252D7009008AE /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64F31CF252D7009008AE /* walking.png */; };
-		055D64FC1CF2530B009008AE /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64FB1CF2530B009008AE /* Transportation.swift */; };
 		0566D04D1CF3007600ECF9A7 /* leastChanges.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04B1CF3007600ECF9A7 /* leastChanges.png */; };
 		0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04C1CF3007600ECF9A7 /* leastTime.png */; };
 		0566D0501CF3015000ECF9A7 /* leastChange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04F1CF3015000ECF9A7 /* leastChange.png */; };
@@ -68,6 +68,7 @@
 		052ADDAC1CF3AFA400DDDB4A /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		052ADDB41CF4B2C300DDDB4A /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		052ADDB61CF60AFE00DDDB4A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewController.swift; sourceTree = "<group>"; };
 		055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewCell.swift; sourceTree = "<group>"; };
 		055D64ED1CF252D7009008AE /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bike.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/bike.png"; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		055D64F11CF252D7009008AE /* tram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tram.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/tram.png"; sourceTree = "<group>"; };
 		055D64F21CF252D7009008AE /* ubahn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ubahn.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/ubahn.png"; sourceTree = "<group>"; };
 		055D64F31CF252D7009008AE /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = walking.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/walking.png"; sourceTree = "<group>"; };
-		055D64FB1CF2530B009008AE /* Transportation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 		0566D04B1CF3007600ECF9A7 /* leastChanges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastChanges.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastChanges.png"; sourceTree = "<group>"; };
 		0566D04C1CF3007600ECF9A7 /* leastTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastTime.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastTime.png"; sourceTree = "<group>"; };
 		0566D04F1CF3015000ECF9A7 /* leastChange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastChange.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastChange.png"; sourceTree = "<group>"; };
@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				05D36A481CF04E3600D65A30 /* User.swift */,
-				055D64FB1CF2530B009008AE /* Transportation.swift */,
 				052ADDAC1CF3AFA400DDDB4A /* Route.swift */,
 			);
 			name = Models;
@@ -185,6 +184,7 @@
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
 				052ADDB41CF4B2C300DDDB4A /* RouteDetailViewController.swift */,
+				052ADDB61CF60AFE00DDDB4A /* Constants.swift */,
 				052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */,
 				052ADDAA1CF365B200DDDB4A /* SearchResultsController.swift */,
 				0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */,
@@ -429,7 +429,6 @@
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
 				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */,
-				055D64FC1CF2530B009008AE /* Transportation.swift in Sources */,
 				052ADDAD1CF3AFA400DDDB4A /* Route.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
 				05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */,
@@ -442,6 +441,7 @@
 				052ADDAB1CF365B200DDDB4A /* SearchResultsController.swift in Sources */,
 				05D36A491CF04E3600D65A30 /* User.swift in Sources */,
 				052ADDAF1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift in Sources */,
+				052ADDB71CF60AFE00DDDB4A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
