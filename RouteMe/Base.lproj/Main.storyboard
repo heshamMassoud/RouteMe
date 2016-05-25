@@ -103,26 +103,19 @@
                                     <constraint firstAttribute="height" constant="128" id="awE-Hh-nlU"/>
                                     <constraint firstAttribute="width" constant="128" id="uxP-nV-B0c"/>
                                 </constraints>
-                                <state key="normal" image="leastTime.png"/>
+                                <state key="normal" image="hourglass.png"/>
                                 <connections>
                                     <action selector="leastTimeTapAction:" destination="LlK-6j-tZI" eventType="touchUpInside" id="U3W-C5-6aM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coq-WE-iNA">
-                                <rect key="frame" x="236" y="348" width="128" height="78"/>
-                                <state key="normal" image="leastChanges.png"/>
-                                <connections>
-                                    <action selector="leastChangesTapAction:" destination="LlK-6j-tZI" eventType="touchUpInside" id="R6M-1X-Yvy"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Least time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAf-k6-moK">
-                                <rect key="frame" x="245" y="270" width="111" height="31"/>
+                                <rect key="frame" x="245" y="266" width="111" height="31"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Least changes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAw-Ua-uby">
-                                <rect key="frame" x="218" y="450" width="164" height="31"/>
+                                <rect key="frame" x="218" y="496" width="164" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="164" id="l9Y-Gh-FQZ"/>
                                 </constraints>
@@ -136,11 +129,22 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coq-WE-iNA">
+                                <rect key="frame" x="236" y="344" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="OME-4f-Ser"/>
+                                    <constraint firstAttribute="height" constant="128" id="X2k-FB-I0P"/>
+                                </constraints>
+                                <state key="normal" image="onetrain.png"/>
+                                <connections>
+                                    <action selector="leastChangesTapAction:" destination="LlK-6j-tZI" eventType="touchUpInside" id="R6M-1X-Yvy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="coq-WE-iNA" firstAttribute="top" secondItem="oAf-k6-moK" secondAttribute="bottom" constant="47" id="3kH-Fl-R43"/>
-                            <constraint firstItem="oAf-k6-moK" firstAttribute="top" secondItem="Rtv-QI-Hpz" secondAttribute="bottom" constant="28" id="GpS-hi-ovg"/>
+                            <constraint firstItem="oAf-k6-moK" firstAttribute="top" secondItem="Rtv-QI-Hpz" secondAttribute="bottom" constant="24" id="GpS-hi-ovg"/>
                             <constraint firstItem="Rtv-QI-Hpz" firstAttribute="centerX" secondItem="Yto-6x-oOQ" secondAttribute="centerX" id="Jgq-2z-juH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HxN-80-f2K" secondAttribute="trailing" id="Svu-iA-nJ7"/>
                             <constraint firstItem="HxN-80-f2K" firstAttribute="top" secondItem="gRr-fY-jFM" secondAttribute="bottom" constant="16" id="W2b-RJ-OgE"/>
@@ -729,10 +733,10 @@
                                 <rect key="frame" x="0.0" y="358" width="600" height="242"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="WeP-iz-uJ3">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="uve-YH-d1d">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeP-iz-uJ3" id="AdV-hR-GE8">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uve-YH-d1d" id="mYa-L7-UUY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -767,8 +771,8 @@
     <resources>
         <image name="bar" width="300" height="20"/>
         <image name="close" width="64" height="64"/>
-        <image name="leastChanges.png" width="128" height="78"/>
-        <image name="leastTime.png" width="256" height="256"/>
+        <image name="hourglass.png" width="256" height="256"/>
+        <image name="onetrain.png" width="256" height="256"/>
         <image name="user" width="126" height="126"/>
     </resources>
 </document>

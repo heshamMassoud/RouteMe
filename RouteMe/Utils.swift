@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import SwiftHEXColors
+
 extension UIView {
     func addBackground(bgImagePath: String) {
         // screen width and height:
@@ -46,9 +48,9 @@ extension UIView {
 
 extension UIButton {
     func addShadow(){
-        self.layer.shadowColor = UIColor.yellowColor().CGColor
+        self.layer.shadowColor = UIColor(hexString: Style.ColorPallete.Blue)?.CGColor
         self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 20
+        self.layer.shadowRadius = 30
         self.layer.cornerRadius = 12.0
     }
     
