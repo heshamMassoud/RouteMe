@@ -9,15 +9,31 @@
 import Foundation
 import UIKit
 
-struct Key {
-    struct RouteStep {
-        static let TransportationMode = "transportationMode"
-        struct Transit {
-            static let TransportationMode = "transportationMode"
+struct API {
+    struct SearchEndpoint {
+        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/search"
+        struct Parameter {
+            static let StartPoint = "startPoint"
+            static let EndPoint = "endPoint"
         }
-        struct NonTransit {
+        struct Key {
+            static let RouteResults = "routeResults"
+            static let PredictionIoId = "predictionIoId"
+            static let IsTransit = "transit"
+            static let Summary = "routeSummary"
+            static let Steps = "steps"
+            static let Polyline = "overviewPolyLine"
+            static let StartAddress = "startAddress"
+            static let EndAddress = "endAddress"
+            static let TransportationMode = "transportationMode"
             static let Distance = "distance"
             static let HTMLInstruction = "htmlIntruction"
+            static let TransportationVehicleShortName = "transportationVehicleShortName"
+            static let TransportationLineColorCode = "transportationLineColorCode"
+        }
+        
+        struct Response {
+            static let Ok = 200
         }
     }
 }
