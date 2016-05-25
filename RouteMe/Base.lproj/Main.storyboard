@@ -622,17 +622,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="241" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OpW-KN-xj8">
                                 <rect key="frame" x="20" y="79" width="560" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="560" id="aAR-OF-ViB"/>
-                                    <constraint firstAttribute="width" constant="245" id="kqZ-VB-5S0"/>
                                     <constraint firstAttribute="height" constant="35" id="pxP-kf-QqS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="kqZ-VB-5S0"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="startPointEnterAction:" destination="IMt-iA-hue" eventType="editingDidBegin" id="2J3-xy-sq9"/>
                                 </connections>
@@ -640,17 +633,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="241" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zba-l5-yaf">
                                 <rect key="frame" x="20" y="130" width="560" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="560" id="TFj-hw-Bm3"/>
                                     <constraint firstAttribute="height" constant="35" id="gvI-GV-YJZ"/>
-                                    <constraint firstAttribute="width" constant="245" id="qGK-js-hZy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="qGK-js-hZy"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="endPointEnterAction:" destination="IMt-iA-hue" eventType="editingDidBegin" id="aj0-bi-HAV"/>
                                 </connections>
@@ -660,7 +646,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="419" id="dk6-0L-6JB"/>
-                                    <constraint firstAttribute="width" constant="566" id="xGI-yY-u3L"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customcell" rowHeight="100" id="TSZ-6q-yZZ" customClass="RouteSearchResultTableViewCell" customModule="RouteMe" customModuleProvider="target">
@@ -695,8 +680,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="00y-eB-vP8" firstAttribute="leading" secondItem="9U9-gn-ev5" secondAttribute="leadingMargin" constant="-6" id="5w1-OV-xOZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OpW-KN-xj8" secondAttribute="trailing" id="5wK-vb-9fn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Zba-l5-yaf" secondAttribute="trailing" id="OJq-n5-mZh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zba-l5-yaf" secondAttribute="trailing" id="RQb-FX-mYs"/>
                             <constraint firstItem="Zba-l5-yaf" firstAttribute="top" secondItem="OpW-KN-xj8" secondAttribute="bottom" constant="16" id="XVU-pS-Asi"/>
                             <constraint firstItem="OpW-KN-xj8" firstAttribute="top" secondItem="vwe-MU-tzP" secondAttribute="bottom" constant="15" id="aiq-JF-ezR"/>
@@ -706,12 +689,6 @@
                             <constraint firstAttribute="leadingMargin" secondItem="Zba-l5-yaf" secondAttribute="leading" id="t8k-GT-ca3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="00y-eB-vP8" secondAttribute="trailing" id="tb6-1z-SbD"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5wK-vb-9fn"/>
-                                <exclude reference="OJq-n5-mZh"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="endPointField" destination="Zba-l5-yaf" id="q35-Zf-531"/>
