@@ -36,6 +36,11 @@ class Helper{
         rememberUser(user)
         redirectToViewController(viewController, targetViewControllerId: "tabBarController", animated: true)
     }
+    
+    static func loginUserAndAskForPreferences(user: User, viewController: UIViewController) {
+        rememberUser(user)
+        redirectToViewController(viewController, targetViewControllerId: "PreferencesNav", animated: true)
+    }
 
     static func rememberUser(user: User) {
         let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
