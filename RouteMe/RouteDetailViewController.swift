@@ -48,6 +48,8 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         routeDetailTableView.delegate = self
         routeDetailTableView.dataSource = self
         
+        self.navigationController?.navigationBar.hidden = true
+        
         drawRoutePath(mapView)
         drawMarker(mapView)
     }
