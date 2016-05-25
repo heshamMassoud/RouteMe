@@ -45,7 +45,6 @@
 		E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02347171B677CD3004F2DBE /* LaunchScreen.xib */; };
 		E02347251B677CD3004F2DBE /* RouteMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02347241B677CD3004F2DBE /* RouteMeTests.swift */; };
 		E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02347531B6A50F6004F2DBE /* SignUpViewController.swift */; };
-		E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */; };
 		E023475E1B6BE32A004F2DBE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023475D1B6BE32A004F2DBE /* HomeViewController.swift */; };
 		E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023475F1B6BE423004F2DBE /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -104,7 +103,6 @@
 		E02347231B677CD3004F2DBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E02347241B677CD3004F2DBE /* RouteMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMeTests.swift; sourceTree = "<group>"; };
 		E02347531B6A50F6004F2DBE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E023475D1B6BE32A004F2DBE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E023475F1B6BE423004F2DBE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FED5EA8E59810117294E700C /* Pods-RouteMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteMe/Pods-RouteMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,11 +127,119 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052ADDB81CF61B6300DDDB4A /* RouteDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				052ADDB41CF4B2C300DDDB4A /* RouteDetailViewController.swift */,
+			);
+			name = RouteDetailView;
+			sourceTree = "<group>";
+		};
+		052ADDB91CF61B7400DDDB4A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				052ADDC01CF61C5500DDDB4A /* HomeView */,
+				052ADDBF1CF61C3000DDDB4A /* SignupView */,
+				052ADDBE1CF61C2300DDDB4A /* LoginView */,
+				052ADDBD1CF61C0D00DDDB4A /* TravelModePreferenceView */,
+				052ADDBC1CF61BF000DDDB4A /* RouteTypePreferenceView */,
+				052ADDBB1CF61BCC00DDDB4A /* AutocompleteView */,
+				052ADDBA1CF61B8800DDDB4A /* SearchResultsView */,
+				052ADDB81CF61B6300DDDB4A /* RouteDetailView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		052ADDBA1CF61B8800DDDB4A /* SearchResultsView */ = {
+			isa = PBXGroup;
+			children = (
+				0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */,
+				052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */,
+			);
+			name = SearchResultsView;
+			sourceTree = "<group>";
+		};
+		052ADDBB1CF61BCC00DDDB4A /* AutocompleteView */ = {
+			isa = PBXGroup;
+			children = (
+				052ADDAA1CF365B200DDDB4A /* SearchResultsController.swift */,
+			);
+			name = AutocompleteView;
+			sourceTree = "<group>";
+		};
+		052ADDBC1CF61BF000DDDB4A /* RouteTypePreferenceView */ = {
+			isa = PBXGroup;
+			children = (
+				05168E701CF26EDB0069AD0E /* RouteTypePreferenceViewController.swift */,
+			);
+			name = RouteTypePreferenceView;
+			sourceTree = "<group>";
+		};
+		052ADDBD1CF61C0D00DDDB4A /* TravelModePreferenceView */ = {
+			isa = PBXGroup;
+			children = (
+				055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */,
+				055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */,
+			);
+			name = TravelModePreferenceView;
+			sourceTree = "<group>";
+		};
+		052ADDBE1CF61C2300DDDB4A /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
+			);
+			name = LoginView;
+			sourceTree = "<group>";
+		};
+		052ADDBF1CF61C3000DDDB4A /* SignupView */ = {
+			isa = PBXGroup;
+			children = (
+				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
+			);
+			name = SignupView;
+			sourceTree = "<group>";
+		};
+		052ADDC01CF61C5500DDDB4A /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
+			);
+			name = HomeView;
+			sourceTree = "<group>";
+		};
+		052ADDC11CF61C7000DDDB4A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */,
+				05DAEE501CEE3B390033AE84 /* city_routeme.jpg */,
+				05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */,
+				05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */,
+				05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */,
+				05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */,
+				05DAEE4D1CEE39FF0033AE84 /* blur.jpg */,
+				055D64ED1CF252D7009008AE /* bike.png */,
+				055D64EE1CF252D7009008AE /* bus.png */,
+				055D64EF1CF252D7009008AE /* car.png */,
+				055D64F01CF252D7009008AE /* sbahn.png */,
+				055D64F11CF252D7009008AE /* tram.png */,
+				055D64F21CF252D7009008AE /* ubahn.png */,
+				055D64F31CF252D7009008AE /* walking.png */,
+				05168E721CF2705E0069AD0E /* xButton.png */,
+				05168E731CF2705E0069AD0E /* checkButton.png */,
+				0566D04B1CF3007600ECF9A7 /* leastChanges.png */,
+				0566D04F1CF3015000ECF9A7 /* leastChange.png */,
+				0566D04C1CF3007600ECF9A7 /* leastTime.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		05AFCC521CF07C0B00A3D40A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				05AFCC531CF07C1C00A3D40A /* Helpers.swift */,
 				05DAEE591CEE3C770033AE84 /* Utils.swift */,
+				052ADDB61CF60AFE00DDDB4A /* Constants.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -179,43 +285,14 @@
 		E023470B1B677CD3004F2DBE /* RouteMe */ = {
 			isa = PBXGroup;
 			children = (
-				05AFCC521CF07C0B00A3D40A /* Utils */,
-				05D36A471CF04E2A00D65A30 /* Models */,
+				052ADDC11CF61C7000DDDB4A /* Images */,
 				E023470E1B677CD3004F2DBE /* AppDelegate.swift */,
+				05D36A471CF04E2A00D65A30 /* Models */,
+				05AFCC521CF07C0B00A3D40A /* Utils */,
+				052ADDB91CF61B7400DDDB4A /* Views */,
 				E02347121B677CD3004F2DBE /* Main.storyboard */,
-				052ADDB41CF4B2C300DDDB4A /* RouteDetailViewController.swift */,
-				052ADDB61CF60AFE00DDDB4A /* Constants.swift */,
-				052ADDAE1CF3B7B100DDDB4A /* RouteSearchResultTableViewCell.swift */,
-				052ADDAA1CF365B200DDDB4A /* SearchResultsController.swift */,
-				0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */,
-				05168E701CF26EDB0069AD0E /* RouteTypePreferenceViewController.swift */,
-				055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */,
-				055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */,
-				E023475F1B6BE423004F2DBE /* LoginViewController.swift */,
-				E023475D1B6BE32A004F2DBE /* HomeViewController.swift */,
-				E02347531B6A50F6004F2DBE /* SignUpViewController.swift */,
-				E02347571B6BE242004F2DBE /* ResetPasswordViewController.swift */,
 				E02347151B677CD3004F2DBE /* Images.xcassets */,
 				E02347171B677CD3004F2DBE /* LaunchScreen.xib */,
-				05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */,
-				05DAEE501CEE3B390033AE84 /* city_routeme.jpg */,
-				05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */,
-				05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */,
-				05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */,
-				05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */,
-				05DAEE4D1CEE39FF0033AE84 /* blur.jpg */,
-				055D64ED1CF252D7009008AE /* bike.png */,
-				055D64EE1CF252D7009008AE /* bus.png */,
-				055D64EF1CF252D7009008AE /* car.png */,
-				055D64F01CF252D7009008AE /* sbahn.png */,
-				055D64F11CF252D7009008AE /* tram.png */,
-				055D64F21CF252D7009008AE /* ubahn.png */,
-				055D64F31CF252D7009008AE /* walking.png */,
-				05168E721CF2705E0069AD0E /* xButton.png */,
-				05168E731CF2705E0069AD0E /* checkButton.png */,
-				0566D04B1CF3007600ECF9A7 /* leastChanges.png */,
-				0566D04F1CF3015000ECF9A7 /* leastChange.png */,
-				0566D04C1CF3007600ECF9A7 /* leastTime.png */,
 				E023470C1B677CD3004F2DBE /* Supporting Files */,
 			);
 			path = RouteMe;
@@ -427,7 +504,6 @@
 			files = (
 				05168E711CF26EDB0069AD0E /* RouteTypePreferenceViewController.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
-				E02347581B6BE242004F2DBE /* ResetPasswordViewController.swift in Sources */,
 				055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */,
 				052ADDAD1CF3AFA400DDDB4A /* Route.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
