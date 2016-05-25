@@ -148,16 +148,12 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
             currentRouteStepHTMLInstruction = currentRouteStepHTMLInstruction.stringByReplacingOccurrencesOfString("<b>", withString: "<span style='font-family: HelveticaNeue-Light !important; font-size: 15px'>")
             currentRouteStepHTMLInstruction = currentRouteStepHTMLInstruction.stringByReplacingOccurrencesOfString("</b>", withString: "</span>")
             currentRouteStepHTMLInstruction = "\(currentRouteStepHTMLInstruction)</span>"
-            //let fontAttribute = [ NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 15)! ]
             let attrStr = try! NSMutableAttributedString(
                 data: currentRouteStepHTMLInstruction.dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
-            //let range = NSMakeRange(0, attrStr.length)
-            //attrStr.addAttributes(fontAttribute, range: range)
             StepSummaryLabel.attributedText = attrStr
             StepSummaryLabel.numberOfLines = 2
-            //stationsLabel.attributedText = attrStr
             headsignLabel.text = currentRouteStepDistance
         }
         return cell
