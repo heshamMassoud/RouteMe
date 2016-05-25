@@ -26,13 +26,13 @@ class RouteTypePreferenceViewController: UIViewController {
     @IBAction func leastTimeTapAction(sender: AnyObject) {
         leastTimeButton.addShadow()
         leastChangesButton.removeShadow()
-        Helper.redirectToViewController(self, targetViewControllerId: "searchAddress", animated: true)
+        Helper.redirectToViewController(self, targetViewControllerId: "tabBarController", animated: true)
     }
 
     @IBAction func leastChangesTapAction(sender: AnyObject) {
         leastChangesButton.addShadow()
         leastTimeButton.removeShadow()
-        Helper.redirectToViewController(self, targetViewControllerId: "searchAddress", animated: true)
+        Helper.redirectToViewController(self, targetViewControllerId: "tabBarController", animated: true)
     }
 
     override func viewDidLoad() {
