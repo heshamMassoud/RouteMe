@@ -66,7 +66,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return route.steps.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
