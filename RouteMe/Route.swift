@@ -18,14 +18,6 @@ class Route {
     var endAddress: String
     //var startLatitude: Double
     //var startLongitude: Double
-
-    static var vehicleNamingMap: [String: String] = ["WALKING": "walking.png",
-                                              "Bus": "bus.png",
-                                              "S-bahn": "sbahn.png",
-                                              "U-bahn": "ubahn.png",
-                                              "Tram": "tram.png",
-                                              "DRIVING": "car.png",
-                                              "BICYCLING": "bike.png"]
     
     init(id: String, isTransit: Bool, summary: String, steps: [AnyObject], polyline: String, startAddress: String, endAddress: String) {
         self.id = id

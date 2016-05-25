@@ -9,23 +9,14 @@
 import UIKit
 
 class TravelModePreferenceViewController: UITableViewController {
-    var transportationModes = [
-        Transportation(label: "Ubahn", imagePath: "ubahn.png"),
-        Transportation(label: "Sbahn", imagePath: "sbahn.png"),
-        Transportation(label: "Bus", imagePath: "bus.png"),
-        Transportation(label: "Tram", imagePath: "tram.png"),
-        Transportation(label: "Bike", imagePath: "bike.png"),
-        Transportation(label: "Walking", imagePath: "walking.png"),
-        Transportation(label: "Driving", imagePath: "car.png"),
-        
-    ]
+    var transportationModes = Transportation.Modes
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transportationModes.count
+        return Transportation.Modes.count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -36,7 +27,7 @@ class TravelModePreferenceViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TravelModePreferenceViewCell
         let transportation = transportationModes[indexPath.row]
-        let image = UIImage(named: transportation.imagePath)
+        let image = UIImage(named: Transportation.ImagePaths[transportation]!)
         cell.cellImage?.image = image
         cell.cellImage?.contentMode = .ScaleAspectFit
         
