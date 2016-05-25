@@ -108,7 +108,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func addContentsToCell(cell: UITableViewCell, index: Int) {
         let currentRouteStep = route.steps[index]
-        let currentRouteStepTransportationMode = currentRouteStep[Key.RouteStep.TransportationMode] as! String
+        let currentRouteStepTransportationMode = currentRouteStep[API.SearchEndpoint.Key.TransportationMode] as! String
         let currentRouteStepTransportationModeImagePath = Transportation.ImagePaths[currentRouteStepTransportationMode]
         
         let stepSummaryLabel = addStepSummaryToCell(cell)
@@ -176,8 +176,8 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
                                        headsignLabel: UILabel, routeStep: AnyObject) {
         vehicleImageView.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -10.5).active=true
         headsignLabel.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -14).active=true
-        let currentRouteStepDistance = routeStep[Key.RouteStep.NonTransit.Distance] as! String
-        let currentRouteStepHTMLInstruction = routeStep[Key.RouteStep.NonTransit.HTMLInstruction] as! String
+        let currentRouteStepDistance = routeStep[API.SearchEndpoint.Key.Distance] as! String
+        let currentRouteStepHTMLInstruction = routeStep[API.SearchEndpoint.Key.HTMLInstruction] as! String
         setHTMLInstructionLabelText(stepSummaryLabel, htmlInstruction: currentRouteStepHTMLInstruction)
         headsignLabel.text = currentRouteStepDistance
     }
