@@ -26,7 +26,11 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         positionLikeSwitch(mapView)
         positionLikeLabel(mapView)
         positionTableView()
+        changeTableViewBackgroundColor()
         
+        self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        likeThisRouteSwitch.tintColor = UIColor(hexString: Style.ColorPallete.RED)
+        likeThisRouteSwitch.onTintColor = UIColor(hexString: Style.ColorPallete.RED)
         self.navigationController?.navigationBar.hidden = true
         
         drawRoutePath(mapView)
@@ -60,6 +64,11 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         routeDetailTableView.delegate = self
         routeDetailTableView.dataSource = self
     }
+    
+    func changeTableViewBackgroundColor() {
+        routeDetailTableView.backgroundView = nil
+        routeDetailTableView.backgroundColor = UIColor(hexString: Style.ColorPallete.Blue)
+    }
 
     func drawRoutePath(mapView: GMSMapView) {
         let routePolyline = route.polyline
@@ -88,6 +97,12 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return Style.Height.RouteDetailCells
     }
     
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(hexString: Style.ColorPallete.GREY)
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         clearCellContents(cell)
@@ -107,6 +122,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func addContentsToCell(cell: UITableViewCell, index: Int) {
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         let currentRouteStep = route.steps[index]
         let currentRouteStepTransportationMode = currentRouteStep[API.SearchEndpoint.Key.TransportationMode] as! String
         let currentRouteStepTransportationModeImagePath = Transportation.ImagePaths[currentRouteStepTransportationMode]
