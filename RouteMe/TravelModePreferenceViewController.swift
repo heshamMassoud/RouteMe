@@ -26,7 +26,7 @@ class TravelModePreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TravelModePreferenceViewCell
-        addCellContents(<#T##cell: TravelModePreferenceViewCell##TravelModePreferenceViewCell#>, index: <#T##Int#>)
+        addCellContents(cell, index: indexPath.row)
         return cell
     }
     
