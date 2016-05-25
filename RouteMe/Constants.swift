@@ -69,6 +69,7 @@ struct Path {
 struct Style {
     struct Font {
         static let RouteDetailCells = UIFont(name: "HelveticaNeue-Thin", size: 15)!
+        static let AutocompleteResults = UIFont(name: "HelveticaNeue-Thin", size: 20)!
     }
     struct Height {
         static let RouteDetailCells: CGFloat = 100.0
@@ -84,10 +85,18 @@ struct Style {
         static let InstructionSpanTagOpenning = "<span style='font-family: HelveticaNeue-Thin !important; font-size: 15px'>"
         static let InstructionSpanTagClosing = "</span>"
     }
+    
+    struct ColorPallete {
+        static let Blue = "#4F5D73"
+        static let Yellow = "#F5CF87"
+        static let RED = "#C75C5C"
+        static let GREY = "#E0E0D1"
+    }
 }
 
 struct Placeholder {
     struct Title {
         static let RouteDetails = "Route details"
+        static let RouteTypePreference = "Please choose your route type preference"
     }
 }
