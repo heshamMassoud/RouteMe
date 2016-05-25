@@ -38,6 +38,12 @@ struct API {
     }
 }
 
+struct GoogleMapsAPI {
+    struct Autocomplete {
+        static let BiasCountry = "de"
+    }
+}
+
 struct Transportation {
     static let Bus = "Bus"
     static let Ubahn = "U-bahn"
@@ -68,6 +74,7 @@ struct Style {
         static let RouteDetailCells: CGFloat = 100.0
         static let RouteDetailMapView: CGFloat = 200
         static let LikeSectionVerticalPadding: CGFloat = 14
+        static let RouteSearchResultsCells: CGFloat = 100.0
     }
     
     struct HTML {
