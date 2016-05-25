@@ -44,6 +44,19 @@ extension UIView {
     
 }
 
+extension UIButton {
+    func addShadow(){
+        self.layer.shadowColor = UIColor.yellowColor().CGColor
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 20
+        self.layer.cornerRadius = 12.0
+    }
+    
+    func removeShadow(){
+        self.layer.shadowOpacity = 0
+    }
+}
+
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

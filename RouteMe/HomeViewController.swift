@@ -9,13 +9,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBAction func logoutAction(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
         Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: true)
         
+    }
+    @IBAction func searchAction(sender: AnyObject) {
+        Helper.redirectToViewController(self, targetViewControllerId: "RouteDetail", animated: true)
     }
 
     override func viewWillAppear(animated: Bool) {
