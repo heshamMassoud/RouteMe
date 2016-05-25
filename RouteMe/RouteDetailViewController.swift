@@ -43,6 +43,8 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         likeThisRouteSwitch.topAnchor.constraintEqualToAnchor(mapView.bottomAnchor, constant: 14).active = true
         likeThisRouteLabel.topAnchor.constraintEqualToAnchor(mapView.bottomAnchor, constant: 14).active = true
         
+        routeDetailTableView.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor).active = true
+        
         routeDetailTableView.delegate = self
         routeDetailTableView.dataSource = self
         
