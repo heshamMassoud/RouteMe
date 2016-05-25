@@ -26,6 +26,7 @@ class TravelModePreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TravelModePreferenceViewCell
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         let transportation = transportationModes[indexPath.row]
         let image = UIImage(named: Transportation.ImagePaths[transportation]!)
         cell.cellImage?.image = image
@@ -37,6 +38,7 @@ class TravelModePreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCellWithIdentifier("headerCell")
+        cell!.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         return cell
     }
     
@@ -55,7 +57,7 @@ class TravelModePreferenceViewController: UITableViewController {
     override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
-    
+
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         let movedObject = transportationModes[sourceIndexPath.row]
         transportationModes.removeAtIndex(sourceIndexPath.row)
@@ -64,8 +66,8 @@ class TravelModePreferenceViewController: UITableViewController {
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem?.title = "Save"
-        
         self.tableView.editing = true
+        self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
     }
     
     
