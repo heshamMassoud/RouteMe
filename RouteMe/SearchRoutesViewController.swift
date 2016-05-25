@@ -182,7 +182,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         cell.routeSummaryLabel.text = currentRoute.summary
         if !currentRoute.isTransit {
             let transportationMode = currentRouteSteps[0]["transportationMode"] as! String
-            let imagePath = Route.vehicleNamingMap[transportationMode]
+            let imagePath = Transportation.ImagePaths[transportationMode]
             let image = UIImage(named: imagePath!)
             let imageView = UIImageView(image: image!)
             imageView.frame = CGRect(x: 8, y: 47, width: 28, height: 28)
@@ -192,7 +192,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
             for (index, step) in currentRouteSteps.enumerate() {
                 var imagePath: String = ""
                 if let transportationMode = step["transportationMode"] as? String {
-                    imagePath = Route.vehicleNamingMap[transportationMode]!
+                    imagePath = Transportation.ImagePaths[transportationMode]!
                 }
                 let image = UIImage(named: imagePath)
                 let imageView = UIImageView(image: image!)
