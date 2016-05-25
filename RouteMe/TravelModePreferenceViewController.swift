@@ -26,14 +26,16 @@ class TravelModePreferenceViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TravelModePreferenceViewCell
+        addCellContents(<#T##cell: TravelModePreferenceViewCell##TravelModePreferenceViewCell#>, index: <#T##Int#>)
+        return cell
+    }
+    
+    func addCellContents(cell: TravelModePreferenceViewCell, index: Int) {
         cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
-        let transportation = transportationModes[indexPath.row]
+        let transportation = transportationModes[index]
         let image = UIImage(named: Transportation.ImagePaths[transportation]!)
         cell.cellImage?.image = image
         cell.cellImage?.contentMode = .ScaleAspectFit
-        
-        
-        return cell
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
