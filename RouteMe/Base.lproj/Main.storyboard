@@ -300,7 +300,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.40784313725490196" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="8ed-Ye-BFH" secondAttribute="centerY" id="Mzi-Zd-Ach"/>
                             <constraint firstItem="fF4-aH-hIA" firstAttribute="top" secondItem="zJD-a7-y8O" secondAttribute="bottom" constant="-4" id="Plf-nm-tXW"/>
@@ -432,7 +432,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.27450980392156865" green="0.74509803921568629" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="QiR-tl-yjV" secondAttribute="centerX" id="131-vy-JjR"/>
                             <constraint firstItem="znj-c5-sYl" firstAttribute="leading" secondItem="F4y-ZN-vgE" secondAttribute="leading" constant="554" id="6ad-sL-v6t"/>
@@ -538,7 +538,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.75394853949999996" blue="0.34447615129999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Mn3-tI-dz0" secondAttribute="centerY" id="GXW-fw-IO5"/>
                             <constraint firstAttribute="centerX" secondItem="Mn3-tI-dz0" secondAttribute="centerX" id="Sau-Zs-gcw"/>
