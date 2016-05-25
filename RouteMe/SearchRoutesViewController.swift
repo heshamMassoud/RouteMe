@@ -46,7 +46,16 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         routeResultsTableView.delegate = self
         routeResultsTableView.dataSource = self
         setTextFieldsBottomBorders()
+        self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        styleSearchFieldsText()
         // Do any additional setup after loading the view.
+    }
+    
+    func styleSearchFieldsText() {
+        startPointField.textColor = UIColor(hexString: Style.ColorPallete.Blue)
+        endPointField.textColor = UIColor(hexString: Style.ColorPallete.Blue)
+        startPointField.font = Style.Font.AutocompleteResults
+        endPointField.font = Style.Font.AutocompleteResults
     }
 
     func setTextFieldsBottomBorders() {
@@ -171,6 +180,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     }
 
     func addContentsToCell(cell: RouteSearchResultTableViewCell, index: Int) {
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         let currentRoute = searchResultsArray[index]
         let currentRouteSteps = currentRoute.steps
         cell.routeSummaryLabel.text = currentRoute.summary
