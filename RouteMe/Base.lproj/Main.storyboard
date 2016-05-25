@@ -842,24 +842,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="35" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6aq-uU-e7Z">
-                                <rect key="frame" x="0.0" y="358" width="600" height="242"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="jUX-RR-q5k"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="WeP-iz-uJ3">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="35"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeP-iz-uJ3" id="AdV-hR-GE8">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like this route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5h-NC-0NK">
                                 <rect key="frame" x="20" y="319" width="120" height="25"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="21"/>
@@ -872,16 +854,32 @@
                                     <action selector="routeLikedAction:" destination="4ch-99-Tx0" eventType="valueChanged" id="NgH-68-5EM"/>
                                 </connections>
                             </switch>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="35" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6aq-uU-e7Z">
+                                <rect key="frame" x="0.0" y="358" width="600" height="242"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="WeP-iz-uJ3">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="35"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeP-iz-uJ3" id="AdV-hR-GE8">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="34.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="498-mF-2Xg" secondAttribute="trailing" id="AjA-YL-b55"/>
                             <constraint firstItem="t5h-NC-0NK" firstAttribute="top" secondItem="UVz-ag-YPI" secondAttribute="bottom" constant="255" placeholder="YES" id="Moj-43-zM7"/>
                             <constraint firstAttribute="leadingMargin" secondItem="t5h-NC-0NK" secondAttribute="leading" id="P61-4c-nUk"/>
+                            <constraint firstItem="6aq-uU-e7Z" firstAttribute="leading" secondItem="1Qn-xG-nuh" secondAttribute="leadingMargin" constant="-20" placeholder="YES" id="REC-YO-1uM"/>
                             <constraint firstItem="6aq-uU-e7Z" firstAttribute="top" secondItem="t5h-NC-0NK" secondAttribute="bottom" constant="14" id="adN-nQ-Nf6"/>
                             <constraint firstItem="498-mF-2Xg" firstAttribute="top" secondItem="UVz-ag-YPI" secondAttribute="bottom" constant="252" placeholder="YES" id="eif-oh-L5E"/>
                             <constraint firstItem="q1t-ED-GmN" firstAttribute="top" secondItem="6aq-uU-e7Z" secondAttribute="bottom" id="ntm-tN-Mev"/>
-                            <constraint firstItem="6aq-uU-e7Z" firstAttribute="leading" secondItem="1Qn-xG-nuh" secondAttribute="leadingMargin" constant="-20" placeholder="YES" id="r0U-vx-dpZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6aq-uU-e7Z" secondAttribute="trailing" constant="-20" placeholder="YES" id="xrP-46-Flq"/>
                         </constraints>
                     </view>
                     <connections>
