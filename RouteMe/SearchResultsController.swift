@@ -22,7 +22,7 @@ class SearchResultsController: UITableViewController {
         super.viewDidLoad()
         self.autocompleteResults = Array()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
-        
+        self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,8 +36,15 @@ class SearchResultsController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath)
-        cell.textLabel?.text = self.autocompleteResults[indexPath.row]
+        styleCell(cell, index: indexPath.row)
         return cell
+    }
+    
+    func styleCell(cell: UITableViewCell, index: Int) {
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        cell.textLabel?.text = self.autocompleteResults[index]
+        cell.textLabel?.textColor = UIColor(hexString: Style.ColorPallete.Blue)
+        cell.textLabel?.font = Style.Font.AutocompleteResults
     }
 
     override func tableView(tableView: UITableView,
