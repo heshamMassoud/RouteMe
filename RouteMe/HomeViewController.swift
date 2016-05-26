@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         
     }
     @IBAction func searchAction(sender: AnyObject) {
-        Helper.redirectToViewController(self, targetViewControllerId: "tabBarController", animated: true)
+        Helper.redirectToViewController(self, targetViewControllerId: "PreferencesNav", animated: true)
     }
 
     override func viewWillAppear(animated: Bool) {
