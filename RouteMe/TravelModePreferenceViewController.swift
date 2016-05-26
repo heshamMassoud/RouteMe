@@ -23,7 +23,6 @@ class TravelModePreferenceViewController: UITableViewController {
         return 1
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TravelModePreferenceViewCell
         addCellContents(cell, index: indexPath.row)
@@ -67,10 +66,8 @@ class TravelModePreferenceViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        self.navigationItem.rightBarButtonItem?.title = "Save"
         self.tableView.editing = true
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
     }
-    
     
 }

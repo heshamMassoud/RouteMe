@@ -30,7 +30,6 @@ class RouteTypePreferenceViewController: UIViewController {
     override func viewDidLoad() {
         titleLabel.text = Placeholder.Title.RouteTypePreference
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
-        self.navigationController?.navigationBar.hidden = true
     }
 
     override func didReceiveMemoryWarning() {

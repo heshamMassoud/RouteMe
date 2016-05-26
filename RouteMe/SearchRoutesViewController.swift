@@ -53,7 +53,6 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         setTextFieldsBottomBorders()
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         styleSearchFieldsText()
-        self.navigationController?.navigationBar.hidden = true
         // Do any additional setup after loading the view.
     }
     
