@@ -14,9 +14,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    @IBAction func unwindToLogInScreen(segue:UIStoryboardSegue) {
-    }
-    
     @IBAction func loginAction(sender: AnyObject) {
         let email = self.emailField.text
         let password = self.passwordField.text
