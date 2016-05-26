@@ -14,14 +14,6 @@ class RouteTypePreferenceViewController: UIViewController {
     @IBOutlet weak var leastTimeLabel: UILabel!
     @IBOutlet weak var leastChangesLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBAction func nextButtonAction(sender: AnyObject) {
-    }
-
-    @IBAction func backButtonAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
 
     @IBAction func leastTimeTapAction(sender: AnyObject) {
         leastTimeButton.addShadow()
