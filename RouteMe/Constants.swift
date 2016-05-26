@@ -62,7 +62,12 @@ struct Transportation {
                                                Bicycling: "bike.png"]
 }
 
-struct Path {
+struct Image {
+    struct Background {
+        static let Signup = "seat_routeme.JPG"
+        static let Home = "bus_routeme.jpeg"
+        static let Login = "city_routeme.jpg"
+    }
     
 }
 

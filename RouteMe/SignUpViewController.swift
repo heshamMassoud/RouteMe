@@ -96,7 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.view.addBackground("seat_routeme.JPG")
+        self.view.addBackground(Image.Background.Signup)
         registerForKeyboardNotifications()
         
         setTextFieldsDelegates()

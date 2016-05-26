@@ -76,7 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.view.addBackground("city_routeme.jpg")
+        self.view.addBackground(Image.Background.Login)
         
         
         setTextFieldDelegates()

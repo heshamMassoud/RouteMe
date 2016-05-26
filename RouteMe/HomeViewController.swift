@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.view.addBackground("bus_routeme.jpeg")
+        self.view.addBackground(Image.Background.Home)
         let isLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
         if (isLoggedIn) {
             let loggedInId = NSUserDefaults.standardUserDefaults().valueForKey("loggedInId") as? String
