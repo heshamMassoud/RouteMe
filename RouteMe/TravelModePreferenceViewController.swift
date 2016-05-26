@@ -11,7 +11,7 @@ import UIKit
 class TravelModePreferenceViewController: UITableViewController {
     var transportationModes = Transportation.Modes
     
-    @IBAction func saveButtonTapped(sender: AnyObject) {
+    @IBAction func unwindToTravelModePrefView(segue: UIStoryboardSegue) {
         
     }
     
