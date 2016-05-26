@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
             let loggedInUser = User(id: loggedInId!, username: loggedInUsername!, email: loggedInEmail!)
             usernameLabel.text = loggedInUser.username;
         }
+        self.navigationController?.navigationBar.hidden = true
         // Do any additional setup after loading the view.
     }
     
