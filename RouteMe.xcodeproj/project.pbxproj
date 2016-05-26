@@ -36,7 +36,6 @@
 		0566D0521CF3232600ECF9A7 /* SearchRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */; };
 		05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFCC531CF07C1C00A3D40A /* Helpers.swift */; };
 		05D36A491CF04E3600D65A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D36A481CF04E3600D65A30 /* User.swift */; };
-		05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */; };
 		05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */; };
 		05DAEE4E1CEE39FF0033AE84 /* blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4D1CEE39FF0033AE84 /* blur.jpg */; };
 		05DAEE531CEE3B390033AE84 /* bus_routeme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */; };
@@ -95,8 +94,7 @@
 		0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoutesViewController.swift; sourceTree = "<group>"; };
 		05AFCC531CF07C1C00A3D40A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		05D36A481CF04E3600D65A30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seat_routeme.png; path = Images.xcassets/seat_routeme.png; sourceTree = "<group>"; };
-		05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = seat_routeme.JPG; path = ../../Downloads/seat_routeme.JPG; sourceTree = "<group>"; };
+		05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = seat_routeme.JPG; path = Images.xcassets/seat_routeme.JPG; sourceTree = "<group>"; };
 		05DAEE4D1CEE39FF0033AE84 /* blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = blur.jpg; path = Images.xcassets/blur.jpg; sourceTree = "<group>"; };
 		05DAEE4F1CEE3B390033AE84 /* bus_routeme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bus_routeme.jpeg; path = Images.xcassets/bus_routeme.jpeg; sourceTree = "<group>"; };
 		05DAEE501CEE3B390033AE84 /* city_routeme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = city_routeme.jpg; path = Images.xcassets/city_routeme.jpg; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				05DAEE501CEE3B390033AE84 /* city_routeme.jpg */,
 				05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */,
 				05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */,
-				05D36A4A1CF06E1D00D65A30 /* seat_routeme.png */,
 				05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */,
 				05DAEE4D1CEE39FF0033AE84 /* blur.jpg */,
 				055D64ED1CF252D7009008AE /* bike.png */,
@@ -439,7 +436,6 @@
 				0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
 				052ADDD21CF65DD700DDDB4A /* tab-bus@2x.png in Resources */,
-				05D36A4B1CF06E1D00D65A30 /* seat_routeme.png in Resources */,
 				05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */,
 				05168E751CF2705E0069AD0E /* checkButton.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,

@@ -88,12 +88,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         Helper.loginUserAndAskForPreferences(user, viewController: self)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(notification: NSNotification) {
         self.keyboardHeight = Helper.getKeyboardHeight(notification)
         self.view.window?.frame.origin.y = -0.45 * keyboardHeight
     }
 
-    func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(notification: NSNotification) {
         if self.view.window?.frame.origin.y != 0 {
             self.view.window?.frame.origin.y += 0.45 * keyboardHeight
         }

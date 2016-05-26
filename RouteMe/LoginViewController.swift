@@ -23,6 +23,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    }
+    
     func authenticateUser(email: String, password: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
         let parameters = [API.LoginEndpoint.Parameter.Email: email, API.LoginEndpoint.Parameter.Password: password]
