@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 struct API {
+    static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/"
     struct SearchEndpoint {
-        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/search"
+        static let Path = "\(API.Path)search"
         struct Parameter {
             static let StartPoint = "startPoint"
             static let EndPoint = "endPoint"
@@ -37,7 +38,7 @@ struct API {
         }
     }
     struct UserEndpoint {
-        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users"
+        static let Path = "\(API.Path)users/"
         struct Parameter {
             static let Username = "username"
             static let Email = "email"
@@ -56,7 +57,7 @@ struct API {
         }
     }
     struct LoginEndpoint {
-        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/login"
+        static let Path = "\(API.UserEndpoint.Path)login"
         struct Parameter {
             static let Email = "email"
             static let Password = "password"
@@ -91,9 +92,11 @@ struct Form {
 }
 
 struct GoogleMapsAPI {
+    static let APIKey = "AIzaSyCZk6CWRY-2b1rONt5YKnfqchNxa1F7YiQ"
     struct Autocomplete {
         static let BiasCountry = "de"
     }
+    
 }
 
 struct Transportation {
