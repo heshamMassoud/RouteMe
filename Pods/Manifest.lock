@@ -1,10 +1,16 @@
 PODS:
   - Alamofire (3.4.0)
+  - GoogleMaps (1.13.2)
+  - SwiftHEXColors (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - GoogleMaps (~> 1.12)
+  - SwiftHEXColors
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  SwiftHEXColors: b0ecc7bd83a1aa2e1956f9ba51f55ebb2bcf86ef
 
 COCOAPODS: 0.39.0
