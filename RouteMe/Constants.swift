@@ -36,6 +36,58 @@ struct API {
             static let Ok = 200
         }
     }
+    struct UserEndpoint {
+        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users"
+        struct Parameter {
+            static let Username = "username"
+            static let Email = "email"
+            static let Password = "password"
+            static let ConfirmPassword = "confirmationPassword"
+        }
+        struct Key {
+            static let Id = "id"
+            static let Username = "username"
+            static let Email = "email"
+            static let Password = "password"
+        }
+        
+        struct Response {
+            static let Created = 201
+        }
+    }
+    struct LoginEndpoint {
+        static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/login"
+        struct Parameter {
+            static let Email = "email"
+            static let Password = "password"
+        }
+        struct Key {
+            static let Id = "id"
+            static let Username = "username"
+            static let Email = "email"
+            static let Password = "password"
+        }
+        
+        struct Response {
+            static let Found = 302
+        }
+    }
+}
+
+struct Form {
+    struct Error {
+        static let Email = "Please enter a valid e-mail address"
+        static let Password = "Password must be greater than 1 character"
+        static let ConfirmationPassword = "Passwords don't match"
+    }
+    struct Field {
+        static let Email = "E-mail"
+        static let Password = "Password"
+        static let ConfirmationPassword = "Confirmation Password"
+    }
+    struct AlertButton {
+        static let Ok = "Ok"
+    }
 }
 
 struct GoogleMapsAPI {

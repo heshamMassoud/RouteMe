@@ -28,10 +28,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func authenticateUser(email: String, password: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
-        let parameters = ["email": email, "password": password]
+        let parameters = [API.LoginEndpoint.Parameter.Email: email, API.LoginEndpoint.Parameter.Password: password]
         Alamofire.request(
             .POST,
-            "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/login",
+            API.LoginEndpoint.Path,
             parameters: parameters,
             encoding:.JSON)
             .responseJSON
@@ -40,15 +40,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.view.stopSpinner(spinnerFrame)
                 switch response.result {
                     case .Success(let JSON):
-                        let HTTP_STATUS_CODE_FOUND: Int = 302
                         let statusCode = (response.response?.statusCode)!
                         let responseJSON = JSON as! NSDictionary
-                        if (statusCode == HTTP_STATUS_CODE_FOUND) {
-                            let loggedInId = responseJSON["id"] as! String
-                            let loggedInUsername = responseJSON["username"] as! String
-                            let loggedInEmail = responseJSON["email"] as! String
-                            let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
-                            Helper.loginUser(user, viewController: self)
+                        if (statusCode == API.LoginEndpoint.Response.Found) {
+                            self.processSuccessfulResponse(responseJSON)
                         } else {
                             Helper.alertRequestError(responseJSON, viewController: self)
                     }
@@ -57,16 +52,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
         }
     }
+    
+    func processSuccessfulResponse(responseJSON: NSDictionary) {
+        let loggedInId = responseJSON[API.LoginEndpoint.Key.Id] as! String
+        let loggedInUsername = responseJSON[API.LoginEndpoint.Key.Username] as! String
+        let loggedInEmail = responseJSON[API.LoginEndpoint.Key.Email] as! String
+        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+        Helper.loginUser(user, viewController: self)
+    }
 
     
     func validateLoginForm(email: String, password: String) -> Bool {
         let isValidEmail = Helper.validateEmail(email)
         let isValidPassword = Helper.validatePassword(password)
         if !isValidEmail {
-            alert("E-mail", message: "Please enter a valid e-mail address.", buttonText: "OK")
+            alert(Form.Field.Email, message: Form.Error.Email, buttonText: Form.AlertButton.Ok)
             return false
         } else if !isValidPassword {
-            alert("Password", message: "Password must be greater than 1 character", buttonText: "OK")
+            alert(Form.Field.Password, message: Form.Error.Password, buttonText: Form.AlertButton.Ok)
             return false
         }
         return true

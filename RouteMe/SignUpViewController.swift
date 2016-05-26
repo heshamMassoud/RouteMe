@@ -38,13 +38,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let isValidPassword = Helper.validatePassword(password)
         let passwordsMatch = Helper.passwordsMatch(password, confirmPassword: confirmPassword)
         if !isValidEmail {
-            alert("E-mail", message: "Please enter a valid e-mail address.", buttonText: "OK")
+            alert(Form.Field.Email, message: Form.Error.Email, buttonText: Form.AlertButton.Ok)
             return false
         } else if !isValidPassword {
-            alert("Password", message: "Password must be greater than 1 character", buttonText: "OK")
+            alert(Form.Field.Password, message: Form.Error.Password, buttonText: Form.AlertButton.Ok)
             return false
         } else if !passwordsMatch {
-            alert("Confirm Password", message: "Passwords don't match", buttonText: "OK")
+            alert(Form.Field.ConfirmationPassword, message: Form.Error.ConfirmationPassword, buttonText: Form.AlertButton.Ok)
             return false
         }
         return true
@@ -52,10 +52,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func createUserRequest(email: String, username: String, password: String, confirmPassword: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
-        let parameters = ["username": username, "email": email, "password": password, "confirmationPassword": password]
+        let parameters = [API.UserEndpoint.Parameter.Username: username,
+                          API.UserEndpoint.Parameter.Email: email,
+                          API.UserEndpoint.Parameter.Password: password,
+                          API.UserEndpoint.Parameter.ConfirmPassword: confirmPassword]
         Alamofire.request(
             .POST,
-            "http://routeme-api.us-east-1.elasticbeanstalk.com/api/users/",
+            API.UserEndpoint.Path,
             parameters: parameters,
             encoding:.JSON)
             .responseJSON
@@ -64,15 +67,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 self.view.stopSpinner(spinnerFrame)
                 switch response.result {
                     case .Success(let JSON):
-                        let HTTP_STATUS_CODE_CREATED: Int = 201
                         let statusCode = (response.response?.statusCode)!
                         let responseJSON = JSON as! NSDictionary
-                        if (statusCode == HTTP_STATUS_CODE_CREATED) {
-                            let loggedInId = responseJSON["id"] as! String
-                            let loggedInUsername = responseJSON["username"] as! String
-                            let loggedInEmail = responseJSON["email"] as! String
-                            let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
-                            Helper.loginUserAndAskForPreferences(user, viewController: self)
+                        if (statusCode == API.UserEndpoint.Response.Created) {
+                            self.processSuccessfulResponse(responseJSON)
                         } else {
                             Helper.alertRequestError(responseJSON, viewController: self)
                     }
@@ -80,6 +78,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.alert("Fatal Error", message: "Request failed with error: \(error)", buttonText: "OK")
                 }
         }
+    }
+    
+    func processSuccessfulResponse(responseJSON: NSDictionary) {
+        let loggedInId = responseJSON[API.UserEndpoint.Key.Id] as! String
+        let loggedInUsername = responseJSON[API.UserEndpoint.Key.Username] as! String
+        let loggedInEmail = responseJSON[API.UserEndpoint.Key.Email] as! String
+        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+        Helper.loginUserAndAskForPreferences(user, viewController: self)
     }
 
     func keyboardWillShow(notification: NSNotification) {
