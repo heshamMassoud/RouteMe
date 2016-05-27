@@ -138,7 +138,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let headsignLabel = addHeadsignLabel(cell, vehicleImageView: vehicleImageView)
         
         if route.isTransit {
-            addTransitRouteCellContents(cell, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel)
+            addTransitRouteCellContents(cell, stepIndex: index, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel)
         } else {
             addNonTransitRouteCellContets(cell, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel, routeStep: currentRouteStep)
         }
@@ -175,19 +175,20 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return headsignLabel
     }
     
-    func addTransitRouteCellContents(cell: UITableViewCell, stepSummaryLabel: UILabel, vehicleImageView: UIImageView, headsignLabel: UILabel) {
-        let stationsLabel = addStationsLabel(cell, stepSummaryLabel: stepSummaryLabel)
+    func addTransitRouteCellContents(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel, vehicleImageView: UIImageView, headsignLabel: UILabel) {
+        let stationsLabel = addStationsLabel(cell, stepIndex: stepIndex, stepSummaryLabel: stepSummaryLabel)
         vehicleImageView.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
         headsignLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 17).active=true
-        stepSummaryLabel.text = route.summary
-        headsignLabel.text = "to Klinikium Großhadern"
+        let transitStepSummary = "\(route.transitSteps[stepIndex].startTime)-\(route.transitSteps[stepIndex].endTime) (\(route.transitSteps[stepIndex].duration))"
+        stepSummaryLabel.text = transitStepSummary
+        headsignLabel.text = route.transitSteps[stepIndex].transportationLineHeadSign
     }
     
-    func addStationsLabel(cell: UITableViewCell, stepSummaryLabel: UILabel) -> UILabel{
+    func addStationsLabel(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel) -> UILabel{
         let stationsLabel = UILabel()
         stationsLabel.translatesAutoresizingMaskIntoConstraints = false
         stationsLabel.font = Style.Font.RouteDetailCells
-        stationsLabel.text = "Münchner Freiheit - Marienplatz"
+        stationsLabel.text = "\(route.transitSteps[stepIndex].startStation)-\(route.transitSteps[stepIndex].endStation)"
         cell.addSubview(stationsLabel)
         stationsLabel.topAnchor.constraintEqualToAnchor(stepSummaryLabel.bottomAnchor, constant: 7).active = true
         stationsLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
