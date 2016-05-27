@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let isFormValid = validateSignUpForm(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
         if isFormValid {
-            createUserRequest(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
+            createUserRequest(email!, username: username!, password: password!)
         }
     }
 
@@ -50,12 +50,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func createUserRequest(email: String, username: String, password: String, confirmPassword: String) {
+    func createUserRequest(email: String, username: String, password: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
         let parameters = [API.UserEndpoint.Parameter.Username: username,
                           API.UserEndpoint.Parameter.Email: email,
-                          API.UserEndpoint.Parameter.Password: password,
-                          API.UserEndpoint.Parameter.ConfirmPassword: confirmPassword]
+                          API.UserEndpoint.Parameter.Password: password]
         Alamofire.request(
             .POST,
             API.UserEndpoint.Path,
@@ -84,7 +83,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let loggedInId = responseJSON[API.UserEndpoint.Key.Id] as! String
         let loggedInUsername = responseJSON[API.UserEndpoint.Key.Username] as! String
         let loggedInEmail = responseJSON[API.UserEndpoint.Key.Email] as! String
-        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail, travelModePreference: [], routeTypePreference: [])
         Helper.loginUserAndAskForPreferences(user, viewController: self)
     }
 

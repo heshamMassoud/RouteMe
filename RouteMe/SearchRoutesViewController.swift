@@ -70,7 +70,10 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
 
     func searchRequest(startPoint: String, endPoint: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
-        let parameters = [API.SearchEndpoint.Parameter.StartPoint: startPoint, API.SearchEndpoint.Parameter.EndPoint: endPoint]
+        let loggedInUser = Helper.getLoggedInUser()
+        let parameters = [API.SearchEndpoint.Parameter.StartPoint: startPoint,
+                          API.SearchEndpoint.Parameter.EndPoint: endPoint,
+                          API.SearchEndpoint.Parameter.UserId: loggedInUser.id]
         Alamofire.request(
             .POST,
             API.SearchEndpoint.Path,

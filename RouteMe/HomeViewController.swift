@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBAction func logoutAction(sender: AnyObject) {
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isLoggedIn")
+        Helper.logoutUser()
         Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: true)
         
     }
@@ -36,13 +36,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.view.addBackground(Image.Background.Home)
-        let isLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
-        if (isLoggedIn) {
-            let loggedInId = NSUserDefaults.standardUserDefaults().valueForKey("loggedInId") as? String
-            let loggedInUsername = NSUserDefaults.standardUserDefaults().valueForKey("loggedInUsername") as? String
-            let loggedInEmail = NSUserDefaults.standardUserDefaults().valueForKey("loggedInEmail") as? String
-            let loggedInUser = User(id: loggedInId!, username: loggedInUsername!, email: loggedInEmail!)
-            usernameLabel.text = loggedInUser.username;
+        if (Helper.isUserLoggedIn()) {
+            let loggedInUsername = Helper.getLoggedInUser().username
+            usernameLabel.text = loggedInUsername;
         }
         self.navigationController?.navigationBar.hidden = true
         // Do any additional setup after loading the view.
