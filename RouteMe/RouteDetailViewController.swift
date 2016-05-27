@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Alamofire
 
 class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,9 +16,15 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var likeThisRouteLabel: UILabel!
     @IBOutlet weak var likeThisRouteSwitch: UISwitch!
+    
     @IBAction func routeLikedAction(sender: AnyObject) {
-        
+        if likeThisRouteSwitch.on {
+            likeDislikeRequest(true)
+        } else {
+            likeDislikeRequest(false)
+        }
     }
+    
     @IBOutlet weak var routeDetailTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +42,49 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         drawRoutePath(mapView)
         drawMarker(mapView)
+        setLikeSwitchState()
+    }
+    
+    func setLikeSwitchState() {
+        if route.liked {
+            likeThisRouteSwitch.on = true;
+        } else {
+            likeThisRouteSwitch.on = false;
+        }
+    }
+    
+    func likeDislikeRequest(isLike: Bool) {
+        var endPointPath = ""
+        if isLike {
+            endPointPath = API.LikeRouteEndpoint.Path
+        } else {
+            endPointPath = API.DislikeRouteEndpoint.Path
+        }
+        let spinnerFrame: UIView = self.view.startASpinner()
+        let loggedInUser = Helper.getLoggedInUser()
+        let parameters = [API.LikeRouteEndpoint.Parameter.UserId: loggedInUser.id,
+                          API.LikeRouteEndpoint.Parameter.TargetEntityId: route.id]
+        Alamofire.request(
+            .POST,
+            endPointPath,
+            parameters: parameters,
+            encoding:.JSON)
+            .responseJSON
+            {
+                response in
+                self.view.stopSpinner(spinnerFrame)
+                switch response.result {
+                case .Success(let JSON):
+                    let statusCode = (response.response?.statusCode)!
+                    let responseJSON = JSON as! NSDictionary
+                    if (statusCode == API.SetPreferenceEndpoint.Response.CREATED) {
+                    } else {
+                        Helper.alertRequestError(responseJSON, viewController: self)
+                    }
+                case .Failure(let error):
+                    self.alert("Fatal Error", message: "Request failed with error: \(error)", buttonText: "OK")
+                }
+        }
     }
 
     func addMapView() -> GMSMapView {

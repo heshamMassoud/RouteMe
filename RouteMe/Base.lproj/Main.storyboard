@@ -494,9 +494,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaJ-fS-Ohu">
-                                        <rect key="frame" x="92" y="283" width="86" height="49"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="27"/>
-                                        <state key="normal" title="Search">
+                                        <rect key="frame" x="92" y="299" width="86" height="33"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                        <state key="normal" title="Preferences">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -595,9 +595,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00y-eB-vP8">
                                 <rect key="frame" x="14" y="173" width="566" height="419"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="419" id="dk6-0L-6JB"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customcell" rowHeight="100" id="TSZ-6q-yZZ" customClass="RouteSearchResultTableViewCell" customModule="RouteMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="566" height="100"/>
@@ -632,6 +629,7 @@
                         <constraints>
                             <constraint firstItem="00y-eB-vP8" firstAttribute="leading" secondItem="9U9-gn-ev5" secondAttribute="leadingMargin" constant="-6" id="5w1-OV-xOZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zba-l5-yaf" secondAttribute="trailing" id="RQb-FX-mYs"/>
+                            <constraint firstItem="BQW-LP-3UX" firstAttribute="top" secondItem="00y-eB-vP8" secondAttribute="bottom" constant="-41" id="S6a-hE-hJZ"/>
                             <constraint firstItem="Zba-l5-yaf" firstAttribute="top" secondItem="OpW-KN-xj8" secondAttribute="bottom" constant="16" id="XVU-pS-Asi"/>
                             <constraint firstItem="OpW-KN-xj8" firstAttribute="top" secondItem="vwe-MU-tzP" secondAttribute="bottom" constant="15" id="aiq-JF-ezR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="OpW-KN-xj8" secondAttribute="leading" id="eeC-P3-6t7"/>
