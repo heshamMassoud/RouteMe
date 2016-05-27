@@ -21,6 +21,7 @@
 		052ADDD31CF65DD700DDDB4A /* tab-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD11CF65DD700DDDB4A /* tab-house@2x.png */; };
 		052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */; };
 		052ADDD71CF6608B00DDDB4A /* house-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */; };
+		0540992E1CF854C50065444E /* TransitStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540992D1CF854C50065444E /* TransitStep.swift */; };
 		055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */; };
 		055D64EA1CF23C6C009008AE /* TravelModePreferenceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */; };
 		055D64F41CF252D7009008AE /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 055D64ED1CF252D7009008AE /* bike.png */; };
@@ -79,6 +80,7 @@
 		052ADDD11CF65DD700DDDB4A /* tab-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-house@2x.png"; path = "../../Downloads/tab-house@2x.png"; sourceTree = "<group>"; };
 		052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bus-tab@2x.png"; path = "../../Downloads/bus-tab@2x.png"; sourceTree = "<group>"; };
 		052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "house-tab@2x.png"; path = "../../Downloads/house-tab@2x.png"; sourceTree = "<group>"; };
+		0540992D1CF854C50065444E /* TransitStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitStep.swift; sourceTree = "<group>"; };
 		055D64E71CF23BAE009008AE /* TravelModePreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewController.swift; sourceTree = "<group>"; };
 		055D64E91CF23C6C009008AE /* TravelModePreferenceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModePreferenceViewCell.swift; sourceTree = "<group>"; };
 		055D64ED1CF252D7009008AE /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bike.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/bike.png"; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				05D36A481CF04E3600D65A30 /* User.swift */,
 				052ADDAC1CF3AFA400DDDB4A /* Route.swift */,
+				0540992D1CF854C50065444E /* TransitStep.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 			files = (
 				05168E711CF26EDB0069AD0E /* RouteTypePreferenceViewController.swift in Sources */,
 				E02347601B6BE423004F2DBE /* LoginViewController.swift in Sources */,
+				0540992E1CF854C50065444E /* TransitStep.swift in Sources */,
 				055D64E81CF23BAE009008AE /* TravelModePreferenceViewController.swift in Sources */,
 				052ADDAD1CF3AFA400DDDB4A /* Route.swift in Sources */,
 				E02347541B6A50F6004F2DBE /* SignUpViewController.swift in Sources */,
