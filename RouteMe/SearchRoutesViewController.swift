@@ -261,12 +261,14 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         label.translatesAutoresizingMaskIntoConstraints = false
         let transportationVehicleShortName = step.transportationVehicleShortName
         label.text = transportationVehicleShortName
-            
+
         let transportationLineColorCode = step.transportationLineColorCode
-        label.backgroundColor = UIColor(hexString: transportationLineColorCode)
-        label.textColor = UIColor.whiteColor()
-        label.layer.cornerRadius = 2.0
-        label.clipsToBounds = true
+        if transportationLineColorCode != "" {
+            label.backgroundColor = UIColor(hexString: transportationLineColorCode)
+            label.textColor = UIColor.whiteColor()
+            label.layer.cornerRadius = 2.0
+            label.clipsToBounds = true
+        }
         cell.addSubview(label)
         label.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
         label.heightAnchor.constraintEqualToConstant(28).active = true

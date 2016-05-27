@@ -43,10 +43,14 @@ class Route {
         self.explanation = explanation
         if isTransit {
             for step in steps {
+                var colorCode = ""
+                if let lineColorCode = step[API.SearchEndpoint.Key.TransportationLineColorCode] as? String{
+                    colorCode = lineColorCode
+                }
                 let transitStep = TransitStep(transportationMode: step[API.SearchEndpoint.Key.TransportationMode] as! String,
                                               transportationLineHeadSign: step[API.SearchEndpoint.Key.TransportationLineHeadSign] as! String,
                                               transportationVehicleShortName: step[API.SearchEndpoint.Key.TransportationVehicleShortName] as! String,
-                                              transportationLineColorCode: step[API.SearchEndpoint.Key.TransportationLineColorCode] as! String,
+                                              transportationLineColorCode: colorCode,
                                               startStation: step[API.SearchEndpoint.Key.StartStation] as! String,
                                               endStation: step[API.SearchEndpoint.Key.EndStation] as! String,
                                               duration: step[API.SearchEndpoint.Key.Duration] as! String,
