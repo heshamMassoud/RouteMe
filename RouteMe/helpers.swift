@@ -49,7 +49,14 @@ class Helper{
         userDefaults.setObject(encodedData, forKey: "loggedInUser")
         userDefaults.synchronize()
     }
-    
+
+    static func updateUser(user: User) {
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(user)
+        userDefaults.setObject(encodedData, forKey: "loggedInUser")
+        userDefaults.synchronize()
+    }
+
     static func logoutUser() {
         let userDefaults = NSUserDefaults.standardUserDefaults();
         userDefaults.setBool(false, forKey: "isLoggedIn")
