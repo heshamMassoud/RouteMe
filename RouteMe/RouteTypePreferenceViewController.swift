@@ -86,5 +86,6 @@ class RouteTypePreferenceViewController: UIViewController {
     func processSuccessfulResponse(responseJSON: NSDictionary, user: User, routeTypePreference: [String]) {
         user.routeTypePreference = routeTypePreference
         user.travelModePreference = transportationModePreference
+        Helper.updateUser(user)
     }
 }

@@ -65,6 +65,13 @@ class TravelModePreferenceViewController: UITableViewController {
         transportationModes.insert(movedObject, atIndex: destinationIndexPath.row)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        let loggedInUser = Helper.getLoggedInUser()
+        if !loggedInUser.travelModePreference.isEmpty {
+            transportationModes = loggedInUser.travelModePreference
+        }
+    }
+    
     override func viewDidLoad() {
         self.tableView.editing = true
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
