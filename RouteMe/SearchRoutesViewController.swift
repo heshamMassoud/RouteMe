@@ -106,7 +106,25 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
             let polyline = route[API.SearchEndpoint.Key.Polyline] as! String
             let startAddress = route[API.SearchEndpoint.Key.StartAddress] as! String
             let endAddress = route[API.SearchEndpoint.Key.EndAddress] as! String
-            newRoute = Route(id: routeId, isTransit: isTransitRoute, summary: routeSummary, steps: steps as! [AnyObject], polyline: polyline, startAddress: startAddress, endAddress: endAddress)
+            let startLatitude = route[API.SearchEndpoint.Key.StartLocationLat] as! Double
+            let startLongitude = route[API.SearchEndpoint.Key.StartLocationLng] as! Double
+            let endLatitude = route[API.SearchEndpoint.Key.EndLocationLat] as! Double
+            let endLongitude = route[API.SearchEndpoint.Key.EndLocationLng] as! Double
+            let liked = route[API.SearchEndpoint.Key.Liked] as! Bool
+            let explanation = route[API.SearchEndpoint.Key.Explanations] as! String
+            newRoute = Route(id: routeId,
+                             isTransit: isTransitRoute,
+                             summary: routeSummary,
+                             steps: steps as! [AnyObject],
+                             polyline: polyline,
+                             startAddress: startAddress,
+                             endAddress: endAddress,
+                             startLatitude: startLatitude,
+                             startLongitude: startLongitude,
+                             endLatitude: endLatitude,
+                             endLongitude: endLongitude,
+                             liked: liked,
+                             explanation: explanation)
             self.searchResultsArray.append(newRoute)
         }
         self.routeResultsTableView.reloadData()
@@ -193,7 +211,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
             let transportationMode = currentRouteSteps[0][API.SearchEndpoint.Key.TransportationMode] as! String
             addNonTransitTransportationModeImageToCell(cell, transportationMode: transportationMode)
         } else {
-            addTransitTransportationModeContentsToCell(cell, routeSteps: currentRouteSteps)
+            addTransitTransportationModeContentsToCell(cell, routeSteps: currentRoute.transitSteps)
         }
     }
 
@@ -205,7 +223,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         cell.addSubview(imageView)
     }
 
-    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [AnyObject]) {
+    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [TransitStep]) {
         var previousLabel: AnyObject?
         for (index, step) in routeSteps.enumerate() {
             let transportationImageView = addTransitTransportationImageToCell(cell, step: step, isFirstStep: index == 0, previousLabel: previousLabel)
@@ -214,11 +232,10 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         }
     }
 
-    func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: AnyObject, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {
+    func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {
         var imagePath: String = ""
-        if let transportationMode = step[API.SearchEndpoint.Key.TransportationMode] as? String {
-            imagePath = Transportation.ImagePaths[transportationMode]!
-        }
+        let transportationMode = step.transportationMode
+        imagePath = Transportation.ImagePaths[transportationMode]!
         let image = UIImage(named: imagePath)
         let imageView = UIImageView(image: image!)
         cell.addSubview(imageView)
@@ -236,16 +253,15 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         return imageView
     }
 
-    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: AnyObject, transportationImageView: UIImageView) -> UILabel {
+    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, transportationImageView: UIImageView) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        if let transportationVehicleShortName = step[API.SearchEndpoint.Key.TransportationVehicleShortName] as? String {
-            label.text = transportationVehicleShortName
-        }
-        if let transportationLineColorCode = step[API.SearchEndpoint.Key.TransportationLineColorCode] as? String {
-            label.backgroundColor = UIColor(hexString: transportationLineColorCode)
-            label.textColor = UIColor.whiteColor()
-        }
+        let transportationVehicleShortName = step.transportationVehicleShortName
+        label.text = transportationVehicleShortName
+            
+        let transportationLineColorCode = step.transportationLineColorCode
+        label.backgroundColor = UIColor(hexString: transportationLineColorCode)
+        label.textColor = UIColor.whiteColor()
         label.layer.cornerRadius = 2.0
         label.clipsToBounds = true
         cell.addSubview(label)
