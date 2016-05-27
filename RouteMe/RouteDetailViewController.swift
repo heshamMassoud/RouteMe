@@ -38,7 +38,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func addMapView() -> GMSMapView {
-        let camera = GMSCameraPosition.cameraWithLatitude(48.1622980, longitude: 11.5554340, zoom: 10)
+        let camera = GMSCameraPosition.cameraWithLatitude(route.startLatitude, longitude: route.startLongitude, zoom: 13)
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         self.view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,11 +78,17 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func drawMarker(mapView: GMSMapView) {
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(48.1622980, 11.5554340)
-        marker.title = "München"
-        marker.snippet = route.startAddress
-        marker.map = mapView
+        let startMarker = GMSMarker()
+        startMarker.position = CLLocationCoordinate2DMake(route.startLatitude, route.startLongitude)
+        startMarker.title = "Start location"
+        startMarker.snippet = route.startAddress
+        startMarker.map = mapView
+        
+        let endMarker = GMSMarker()
+        endMarker.position = CLLocationCoordinate2DMake(route.endLatitude, route.endLongitude)
+        endMarker.title = "End location"
+        endMarker.snippet = route.endAddress
+        endMarker.map = mapView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
