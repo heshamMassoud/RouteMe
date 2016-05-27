@@ -210,29 +210,47 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         let currentRoute = searchResultsArray[index]
         let currentRouteSteps = currentRoute.steps
         cell.routeSummaryLabel.text = currentRoute.summary
+        var lastAddedView: UIView = UIView()
         if !currentRoute.isTransit {
             let transportationMode = currentRouteSteps[0][API.SearchEndpoint.Key.TransportationMode] as! String
-            addNonTransitTransportationModeImageToCell(cell, transportationMode: transportationMode)
+            lastAddedView = addNonTransitTransportationModeImageToCell(cell, transportationMode: transportationMode)
         } else {
-            addTransitTransportationModeContentsToCell(cell, routeSteps: currentRoute.transitSteps)
+            lastAddedView = addTransitTransportationModeContentsToCell(cell, routeSteps: currentRoute.transitSteps)
         }
+        addExplanationImageToCell(cell, lastAddedView: lastAddedView, explanation: currentRoute.explanation)
+        
+    }
+    
+    func addExplanationImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView, explanation: String) {
+        let imagePath = Explanations.ImagePaths[explanation]
+        let image = UIImage(named: imagePath!)
+        let imageView = UIImageView(image: image!)
+        cell.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
+        imageView.widthAnchor.constraintEqualToConstant(28).active = true
+        imageView.heightAnchor.constraintEqualToConstant(28).active = true
+        imageView.leadingAnchor.constraintEqualToAnchor(lastAddedView.trailingAnchor, constant: 14).active = true
+        
     }
 
-    func addNonTransitTransportationModeImageToCell(cell: RouteSearchResultTableViewCell, transportationMode: String) {
+    func addNonTransitTransportationModeImageToCell(cell: RouteSearchResultTableViewCell, transportationMode: String) -> UIView {
         let imagePath = Transportation.ImagePaths[transportationMode]
         let image = UIImage(named: imagePath!)
         let imageView = UIImageView(image: image!)
         imageView.frame = CGRect(x: 8, y: 47, width: 28, height: 28)
         cell.addSubview(imageView)
+        return imageView
     }
 
-    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [TransitStep]) {
+    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [TransitStep]) -> UIView{
         var previousLabel: AnyObject?
         for (index, step) in routeSteps.enumerate() {
             let transportationImageView = addTransitTransportationImageToCell(cell, step: step, isFirstStep: index == 0, previousLabel: previousLabel)
             let transportationShortNameLabel = addLineShortNameLabelToCell(cell, step: step, transportationImageView: transportationImageView)
             previousLabel = transportationShortNameLabel as UILabel
         }
+        return previousLabel as! UIView
     }
 
     func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {

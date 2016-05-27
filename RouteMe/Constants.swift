@@ -144,6 +144,14 @@ struct Transportation {
                                                Bicycling: "bike.png"]
 }
 
+struct Explanations {
+    static let ImagePaths: [String: String] = ["LIKED": "like-icon.png",
+                                               "HYBRID_RECOMMENDER": "collab-icon.png",
+                                               "POPULARITY": "popular-icon.png",
+                                               "LIKES_PREFERENCES": "like-pref-icon.png",
+                                               "PREFERENCES": "pref-icon.png"]
+}
+
 struct RouteTypePreference {
     static let LeastChanges = "leastChanges"
     static let LeastTime = "leastTime"
