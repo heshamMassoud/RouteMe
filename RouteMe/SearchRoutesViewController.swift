@@ -206,7 +206,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     }
 
     func addContentsToCell(cell: RouteSearchResultTableViewCell, index: Int) {
-        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        styleTableViewCell(cell)
         let currentRoute = searchResultsArray[index]
         let currentRouteSteps = currentRoute.steps
         cell.routeSummaryLabel.text = currentRoute.summary
@@ -219,6 +219,13 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         }
         addExplanationImageToCell(cell, lastAddedView: lastAddedView, explanation: currentRoute.explanation)
         
+    }
+    
+    func styleTableViewCell(cell: RouteSearchResultTableViewCell) {
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        let cellBackground = UIView()
+        cellBackground.backgroundColor = UIColor(hexString: Style.ColorPallete.Blue)
+        cell.selectedBackgroundView = cellBackground
     }
     
     func addExplanationImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView, explanation: String) {
