@@ -54,7 +54,6 @@ class Helper{
         let userDefaults = NSUserDefaults.standardUserDefaults();
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(user)
         userDefaults.setObject(encodedData, forKey: "loggedInUser")
-        userDefaults.synchronize()
     }
 
     static func logoutUser() {
