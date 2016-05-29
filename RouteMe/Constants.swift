@@ -148,6 +148,8 @@ struct Transportation {
     static let Driving = "DRIVING"
     static let Bicycling = "BICYCLING"
     static let Walking = "WALKING"
+    static let RE = "Long distance train"
+    static let ICE = "High speed train"
     static let Modes: [String] = [Bus, Ubahn, Tram, Sbahn, Driving, Bicycling, Walking]
     static let ImagePaths: [String: String] = [Walking: "walking.png",
                                                Bus: "bus.png",
@@ -155,7 +157,10 @@ struct Transportation {
                                                Ubahn: "ubahn.png",
                                                Tram: "tram.png",
                                                Driving: "car.png",
-                                               Bicycling: "bike.png"]
+                                               Bicycling: "bike.png",
+                                               RE: "bahn.png",
+                                               ICE: "bahn.png"
+                                               ]
 }
 
 struct Explanations {

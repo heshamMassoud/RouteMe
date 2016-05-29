@@ -43,19 +43,51 @@ class Route {
         self.explanation = explanation
         if isTransit {
             for step in steps {
-                var colorCode = ""
-                if let lineColorCode = step[API.SearchEndpoint.Key.TransportationLineColorCode] as? String{
-                    colorCode = lineColorCode
+                var transportationMode = ""
+                var transportationLineHeadSign = ""
+                var transportationVehicleShortName = ""
+                var transportationLineColorCode = ""
+                var startStation = ""
+                var endStation = ""
+                var duration = ""
+                var startTime = ""
+                var endTime = ""
+                if let transportationModeUW = step[API.SearchEndpoint.Key.TransportationMode] as? String{
+                    transportationMode = transportationModeUW
                 }
-                let transitStep = TransitStep(transportationMode: step[API.SearchEndpoint.Key.TransportationMode] as! String,
-                                              transportationLineHeadSign: step[API.SearchEndpoint.Key.TransportationLineHeadSign] as! String,
-                                              transportationVehicleShortName: step[API.SearchEndpoint.Key.TransportationVehicleShortName] as! String,
-                                              transportationLineColorCode: colorCode,
-                                              startStation: step[API.SearchEndpoint.Key.StartStation] as! String,
-                                              endStation: step[API.SearchEndpoint.Key.EndStation] as! String,
-                                              duration: step[API.SearchEndpoint.Key.Duration] as! String,
-                                              startTime: step[API.SearchEndpoint.Key.StartTime] as! String,
-                                              endTime: step[API.SearchEndpoint.Key.EndTime] as! String)
+                if let transportationLineHeadSignUW = step[API.SearchEndpoint.Key.TransportationLineHeadSign] as? String{
+                    transportationLineHeadSign = transportationLineHeadSignUW
+                }
+                if let transportationVehicleShortNameUW = step[API.SearchEndpoint.Key.TransportationVehicleShortName] as? String{
+                    transportationVehicleShortName = transportationVehicleShortNameUW
+                }
+                if let transportationLineColorCodeUW = step[API.SearchEndpoint.Key.TransportationLineColorCode] as? String{
+                    transportationLineColorCode = transportationLineColorCodeUW
+                }
+                if let startStationUW = step[API.SearchEndpoint.Key.StartStation] as? String{
+                    startStation = startStationUW
+                }
+                if let endStationUW = step[API.SearchEndpoint.Key.EndStation] as? String{
+                    endStation = endStationUW
+                }
+                if let durationUW = step[API.SearchEndpoint.Key.Duration] as? String{
+                    duration = durationUW
+                }
+                if let startTimeUW = step[API.SearchEndpoint.Key.StartTime] as? String{
+                    startTime = startTimeUW
+                }
+                if let endTimeUW = step[API.SearchEndpoint.Key.EndTime] as? String{
+                    endTime = endTimeUW
+                }
+                let transitStep = TransitStep(transportationMode: transportationMode,
+                                              transportationLineHeadSign: transportationLineHeadSign,
+                                              transportationVehicleShortName: transportationVehicleShortName,
+                                              transportationLineColorCode: transportationLineColorCode,
+                                              startStation: startStation,
+                                              endStation: endStation,
+                                              duration: duration,
+                                              startTime: startTime,
+                                              endTime: endTime)
                 self.transitSteps.append(transitStep)
             }
         }
