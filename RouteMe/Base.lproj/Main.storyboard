@@ -593,7 +593,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00y-eB-vP8">
-                                <rect key="frame" x="14" y="173" width="566" height="419"/>
+                                <rect key="frame" x="14" y="173" width="566" height="378"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customcell" rowHeight="100" id="TSZ-6q-yZZ" customClass="RouteSearchResultTableViewCell" customModule="RouteMe" customModuleProvider="target">
@@ -629,7 +629,7 @@
                         <constraints>
                             <constraint firstItem="00y-eB-vP8" firstAttribute="leading" secondItem="9U9-gn-ev5" secondAttribute="leadingMargin" constant="-6" id="5w1-OV-xOZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zba-l5-yaf" secondAttribute="trailing" id="RQb-FX-mYs"/>
-                            <constraint firstItem="BQW-LP-3UX" firstAttribute="top" secondItem="00y-eB-vP8" secondAttribute="bottom" constant="-41" id="S6a-hE-hJZ"/>
+                            <constraint firstItem="BQW-LP-3UX" firstAttribute="top" secondItem="00y-eB-vP8" secondAttribute="bottom" id="S6a-hE-hJZ"/>
                             <constraint firstItem="Zba-l5-yaf" firstAttribute="top" secondItem="OpW-KN-xj8" secondAttribute="bottom" constant="16" id="XVU-pS-Asi"/>
                             <constraint firstItem="OpW-KN-xj8" firstAttribute="top" secondItem="vwe-MU-tzP" secondAttribute="bottom" constant="15" id="aiq-JF-ezR"/>
                             <constraint firstAttribute="leadingMargin" secondItem="OpW-KN-xj8" secondAttribute="leading" id="eeC-P3-6t7"/>
