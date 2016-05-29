@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Alamofire
 
 class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,9 +16,15 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var likeThisRouteLabel: UILabel!
     @IBOutlet weak var likeThisRouteSwitch: UISwitch!
+    
     @IBAction func routeLikedAction(sender: AnyObject) {
-        
+        if likeThisRouteSwitch.on {
+            likeDislikeRequest(true)
+        } else {
+            likeDislikeRequest(false)
+        }
     }
+    
     @IBOutlet weak var routeDetailTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +38,56 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         likeThisRouteSwitch.tintColor = UIColor(hexString: Style.ColorPallete.RED)
         likeThisRouteSwitch.onTintColor = UIColor(hexString: Style.ColorPallete.RED)
-        self.navigationController?.navigationBar.hidden = true
         
         drawRoutePath(mapView)
         drawMarker(mapView)
+        setLikeSwitchState()
+    }
+    
+    func setLikeSwitchState() {
+        if route.liked {
+            likeThisRouteSwitch.on = true;
+        } else {
+            likeThisRouteSwitch.on = false;
+        }
+    }
+    
+    func likeDislikeRequest(isLike: Bool) {
+        var endPointPath = ""
+        if isLike {
+            endPointPath = API.LikeRouteEndpoint.Path
+        } else {
+            endPointPath = API.DislikeRouteEndpoint.Path
+        }
+        let spinnerFrame: UIView = self.view.startASpinner()
+        let loggedInUser = Helper.getLoggedInUser()
+        let parameters = [API.LikeRouteEndpoint.Parameter.UserId: loggedInUser.id,
+                          API.LikeRouteEndpoint.Parameter.TargetEntityId: route.id]
+        Alamofire.request(
+            .POST,
+            endPointPath,
+            parameters: parameters,
+            encoding:.JSON)
+            .responseJSON
+            {
+                response in
+                self.view.stopSpinner(spinnerFrame)
+                switch response.result {
+                case .Success(let JSON):
+                    let statusCode = (response.response?.statusCode)!
+                    let responseJSON = JSON as! NSDictionary
+                    if (statusCode == API.SetPreferenceEndpoint.Response.CREATED) {
+                    } else {
+                        Helper.alertRequestError(responseJSON, viewController: self)
+                    }
+                case .Failure(let error):
+                    self.alert("Fatal Error", message: "Request failed with error: \(error)", buttonText: "OK")
+                }
+        }
     }
 
     func addMapView() -> GMSMapView {
-        let camera = GMSCameraPosition.cameraWithLatitude(48.1622980, longitude: 11.5554340, zoom: 10)
+        let camera = GMSCameraPosition.cameraWithLatitude(route.startLatitude, longitude: route.startLongitude, zoom: 13)
         let mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         self.view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,11 +127,17 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func drawMarker(mapView: GMSMapView) {
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(48.1622980, 11.5554340)
-        marker.title = "München"
-        marker.snippet = route.startAddress
-        marker.map = mapView
+        let startMarker = GMSMarker()
+        startMarker.position = CLLocationCoordinate2DMake(route.startLatitude, route.startLongitude)
+        startMarker.title = "Start location"
+        startMarker.snippet = route.startAddress
+        startMarker.map = mapView
+        
+        let endMarker = GMSMarker()
+        endMarker.position = CLLocationCoordinate2DMake(route.endLatitude, route.endLongitude)
+        endMarker.title = "End location"
+        endMarker.snippet = route.endAddress
+        endMarker.map = mapView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,7 +187,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let headsignLabel = addHeadsignLabel(cell, vehicleImageView: vehicleImageView)
         
         if route.isTransit {
-            addTransitRouteCellContents(cell, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel)
+            addTransitRouteCellContents(cell, stepIndex: index, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel)
         } else {
             addNonTransitRouteCellContets(cell, stepSummaryLabel: stepSummaryLabel, vehicleImageView: vehicleImageView, headsignLabel: headsignLabel, routeStep: currentRouteStep)
         }
@@ -169,22 +224,25 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return headsignLabel
     }
     
-    func addTransitRouteCellContents(cell: UITableViewCell, stepSummaryLabel: UILabel, vehicleImageView: UIImageView, headsignLabel: UILabel) {
-        let stationsLabel = addStationsLabel(cell, stepSummaryLabel: stepSummaryLabel)
+    func addTransitRouteCellContents(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel, vehicleImageView: UIImageView, headsignLabel: UILabel) {
+        let stationsLabel = addStationsLabel(cell, stepIndex: stepIndex, stepSummaryLabel: stepSummaryLabel)
         vehicleImageView.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
         headsignLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 17).active=true
-        stepSummaryLabel.text = route.summary
-        headsignLabel.text = "to Klinikium Großhadern"
+        let transitStepSummary = "\(route.transitSteps[stepIndex].startTime)-\(route.transitSteps[stepIndex].endTime) (\(route.transitSteps[stepIndex].duration))"
+        stepSummaryLabel.text = transitStepSummary
+        headsignLabel.text = route.transitSteps[stepIndex].transportationLineHeadSign
     }
     
-    func addStationsLabel(cell: UITableViewCell, stepSummaryLabel: UILabel) -> UILabel{
+    func addStationsLabel(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel) -> UILabel{
         let stationsLabel = UILabel()
         stationsLabel.translatesAutoresizingMaskIntoConstraints = false
         stationsLabel.font = Style.Font.RouteDetailCells
-        stationsLabel.text = "Münchner Freiheit - Marienplatz"
+        stationsLabel.text = "\(route.transitSteps[stepIndex].startStation)-\(route.transitSteps[stepIndex].endStation)"
         cell.addSubview(stationsLabel)
         stationsLabel.topAnchor.constraintEqualToAnchor(stepSummaryLabel.bottomAnchor, constant: 7).active = true
         stationsLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
+        stationsLabel.trailingAnchor.constraintEqualToAnchor(cell.trailingAnchor).active = true
+        stationsLabel.adjustsFontSizeToFitWidth = true
         return stationsLabel
     }
     

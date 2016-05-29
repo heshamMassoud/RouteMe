@@ -12,6 +12,7 @@ import Alamofire
 import SwiftHEXColors
 
 class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate, InsertAddressOnTextfield, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var resultsTableViewStatus: UILabel!
     @IBOutlet weak var startPointField: UITextField!
     @IBOutlet weak var endPointField: UITextField!
     @IBOutlet weak var routeResultsTableView: UITableView!
@@ -70,7 +71,10 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
 
     func searchRequest(startPoint: String, endPoint: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
-        let parameters = [API.SearchEndpoint.Parameter.StartPoint: startPoint, API.SearchEndpoint.Parameter.EndPoint: endPoint]
+        let loggedInUser = Helper.getLoggedInUser()
+        let parameters = [API.SearchEndpoint.Parameter.StartPoint: startPoint,
+                          API.SearchEndpoint.Parameter.EndPoint: endPoint,
+                          API.SearchEndpoint.Parameter.UserId: loggedInUser.id]
         Alamofire.request(
             .POST,
             API.SearchEndpoint.Path,
@@ -96,6 +100,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     }
 
     func processResultIntoTableView(responseJSON: NSDictionary) {
+        resultsTableViewStatus.hidden = true
         let result = responseJSON[API.SearchEndpoint.Key.RouteResults] as! [Dictionary<String, AnyObject>]
         for route in result {
             var newRoute: Route
@@ -106,7 +111,25 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
             let polyline = route[API.SearchEndpoint.Key.Polyline] as! String
             let startAddress = route[API.SearchEndpoint.Key.StartAddress] as! String
             let endAddress = route[API.SearchEndpoint.Key.EndAddress] as! String
-            newRoute = Route(id: routeId, isTransit: isTransitRoute, summary: routeSummary, steps: steps as! [AnyObject], polyline: polyline, startAddress: startAddress, endAddress: endAddress)
+            let startLatitude = route[API.SearchEndpoint.Key.StartLocationLat] as! Double
+            let startLongitude = route[API.SearchEndpoint.Key.StartLocationLng] as! Double
+            let endLatitude = route[API.SearchEndpoint.Key.EndLocationLat] as! Double
+            let endLongitude = route[API.SearchEndpoint.Key.EndLocationLng] as! Double
+            let liked = route[API.SearchEndpoint.Key.Liked] as! Bool
+            let explanation = route[API.SearchEndpoint.Key.Explanations] as! String
+            newRoute = Route(id: routeId,
+                             isTransit: isTransitRoute,
+                             summary: routeSummary,
+                             steps: steps as! [AnyObject],
+                             polyline: polyline,
+                             startAddress: startAddress,
+                             endAddress: endAddress,
+                             startLatitude: startLatitude,
+                             startLongitude: startLongitude,
+                             endLatitude: endLatitude,
+                             endLongitude: endLongitude,
+                             liked: liked,
+                             explanation: explanation)
             self.searchResultsArray.append(newRoute)
         }
         self.routeResultsTableView.reloadData()
@@ -120,10 +143,18 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
      */
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .Address
+        filter.type = .Geocode
+        // NE Coords: 48.474995, 12.109556
+        // SW Coords: 47.873878, 11.114401
+        let neBoundsCorner = CLLocationCoordinate2D(latitude: 48.474995,
+                                                    longitude: 12.109556)
+        let swBoundsCorner = CLLocationCoordinate2D(latitude: 47.873878,
+                                                    longitude: 11.114401)
+        let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner,
+                                         coordinate: swBoundsCorner)
         filter.country = GoogleMapsAPI.Autocomplete.BiasCountry
         let placeClient = GMSPlacesClient()
-        placeClient.autocompleteQuery(searchText, bounds: nil, filter: filter) { (results, error: NSError?) -> Void in
+        placeClient.autocompleteQuery(searchText, bounds: bounds, filter: filter) { (results, error: NSError?) -> Void in
             self.autocompleteResultsArray.removeAll()
             if results == nil {
                 return
@@ -185,40 +216,64 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     }
 
     func addContentsToCell(cell: RouteSearchResultTableViewCell, index: Int) {
-        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        styleTableViewCell(cell)
         let currentRoute = searchResultsArray[index]
         let currentRouteSteps = currentRoute.steps
         cell.routeSummaryLabel.text = currentRoute.summary
+        var lastAddedView: UIView = UIView()
         if !currentRoute.isTransit {
             let transportationMode = currentRouteSteps[0][API.SearchEndpoint.Key.TransportationMode] as! String
-            addNonTransitTransportationModeImageToCell(cell, transportationMode: transportationMode)
+            lastAddedView = addNonTransitTransportationModeImageToCell(cell, transportationMode: transportationMode)
         } else {
-            addTransitTransportationModeContentsToCell(cell, routeSteps: currentRouteSteps)
+            lastAddedView = addTransitTransportationModeContentsToCell(cell, routeSteps: currentRoute.transitSteps)
         }
+        addExplanationImageToCell(cell, lastAddedView: lastAddedView, explanation: currentRoute.explanation)
+        
+    }
+    
+    func styleTableViewCell(cell: RouteSearchResultTableViewCell) {
+        cell.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+        let cellBackground = UIView()
+        cellBackground.backgroundColor = UIColor(hexString: Style.ColorPallete.Blue)
+        cell.selectedBackgroundView = cellBackground
+    }
+    
+    func addExplanationImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView, explanation: String) {
+        let imagePath = Explanations.ImagePaths[explanation]
+        let image = UIImage(named: imagePath!)
+        let imageView = UIImageView(image: image!)
+        cell.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
+        imageView.widthAnchor.constraintEqualToConstant(28).active = true
+        imageView.heightAnchor.constraintEqualToConstant(28).active = true
+        imageView.leadingAnchor.constraintEqualToAnchor(lastAddedView.trailingAnchor, constant: 14).active = true
+        
     }
 
-    func addNonTransitTransportationModeImageToCell(cell: RouteSearchResultTableViewCell, transportationMode: String) {
+    func addNonTransitTransportationModeImageToCell(cell: RouteSearchResultTableViewCell, transportationMode: String) -> UIView {
         let imagePath = Transportation.ImagePaths[transportationMode]
         let image = UIImage(named: imagePath!)
         let imageView = UIImageView(image: image!)
         imageView.frame = CGRect(x: 8, y: 47, width: 28, height: 28)
         cell.addSubview(imageView)
+        return imageView
     }
 
-    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [AnyObject]) {
+    func addTransitTransportationModeContentsToCell(cell: RouteSearchResultTableViewCell, routeSteps: [TransitStep]) -> UIView{
         var previousLabel: AnyObject?
         for (index, step) in routeSteps.enumerate() {
             let transportationImageView = addTransitTransportationImageToCell(cell, step: step, isFirstStep: index == 0, previousLabel: previousLabel)
             let transportationShortNameLabel = addLineShortNameLabelToCell(cell, step: step, transportationImageView: transportationImageView)
             previousLabel = transportationShortNameLabel as UILabel
         }
+        return previousLabel as! UIView
     }
 
-    func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: AnyObject, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {
+    func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {
         var imagePath: String = ""
-        if let transportationMode = step[API.SearchEndpoint.Key.TransportationMode] as? String {
-            imagePath = Transportation.ImagePaths[transportationMode]!
-        }
+        let transportationMode = step.transportationMode
+        imagePath = Transportation.ImagePaths[transportationMode]!
         let image = UIImage(named: imagePath)
         let imageView = UIImageView(image: image!)
         cell.addSubview(imageView)
@@ -236,18 +291,19 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         return imageView
     }
 
-    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: AnyObject, transportationImageView: UIImageView) -> UILabel {
+    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, transportationImageView: UIImageView) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        if let transportationVehicleShortName = step[API.SearchEndpoint.Key.TransportationVehicleShortName] as? String {
-            label.text = transportationVehicleShortName
-        }
-        if let transportationLineColorCode = step[API.SearchEndpoint.Key.TransportationLineColorCode] as? String {
+        let transportationVehicleShortName = step.transportationVehicleShortName
+        label.text = transportationVehicleShortName
+
+        let transportationLineColorCode = step.transportationLineColorCode
+        if transportationLineColorCode != "" {
             label.backgroundColor = UIColor(hexString: transportationLineColorCode)
             label.textColor = UIColor.whiteColor()
+            label.layer.cornerRadius = 2.0
+            label.clipsToBounds = true
         }
-        label.layer.cornerRadius = 2.0
-        label.clipsToBounds = true
         cell.addSubview(label)
         label.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
         label.heightAnchor.constraintEqualToConstant(28).active = true

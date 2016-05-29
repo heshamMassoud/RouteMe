@@ -43,13 +43,34 @@ class Helper{
     }
 
     static func rememberUser(user: User) {
-        let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
-        if hasLoginKey == false {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isLoggedIn")
-            NSUserDefaults.standardUserDefaults().setValue(user.id, forKey: "loggedInId")
-            NSUserDefaults.standardUserDefaults().setValue(user.username, forKey: "loggedInUsername")
-            NSUserDefaults.standardUserDefaults().setValue(user.email, forKey: "loggedInEmail")
-        }
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        userDefaults.setBool(true, forKey: "isLoggedIn")
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(user)
+        userDefaults.setObject(encodedData, forKey: "loggedInUser")
+        userDefaults.synchronize()
+    }
+
+    static func updateUser(user: User) {
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(user)
+        userDefaults.setObject(encodedData, forKey: "loggedInUser")
+    }
+
+    static func logoutUser() {
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        userDefaults.setBool(false, forKey: "isLoggedIn")
+        userDefaults.setValue(nil, forKey: "loggedInUser")
+    }
+    
+    static func isUserLoggedIn() -> Bool {
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        return userDefaults.boolForKey("isLoggedIn")
+    }
+    
+    static func getLoggedInUser() -> User {
+        let userDefaults = NSUserDefaults.standardUserDefaults();
+        let decoded  = userDefaults.objectForKey("loggedInUser") as! NSData
+        return NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! User
     }
 
     static func redirectToViewController(viewController: UIViewController, targetViewControllerId: String, animated: Bool) {

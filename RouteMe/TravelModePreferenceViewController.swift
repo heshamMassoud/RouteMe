@@ -58,16 +58,29 @@ class TravelModePreferenceViewController: UITableViewController {
     override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
-
+    
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         let movedObject = transportationModes[sourceIndexPath.row]
         transportationModes.removeAtIndex(sourceIndexPath.row)
         transportationModes.insert(movedObject, atIndex: destinationIndexPath.row)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        let loggedInUser = Helper.getLoggedInUser()
+        if !loggedInUser.travelModePreference.isEmpty {
+            transportationModes = loggedInUser.travelModePreference
+        }
+    }
+    
     override func viewDidLoad() {
         self.tableView.editing = true
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if  segue.identifier == "travelModeToRouteTypePrefSegue", let destination = segue.destinationViewController as? RouteTypePreferenceViewController {
+            destination.transportationModePreference = transportationModes
+        }
     }
     
 }

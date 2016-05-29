@@ -16,6 +16,7 @@ struct API {
         struct Parameter {
             static let StartPoint = "startPoint"
             static let EndPoint = "endPoint"
+            static let UserId = "userId"
         }
         struct Key {
             static let RouteResults = "routeResults"
@@ -28,9 +29,21 @@ struct API {
             static let EndAddress = "endAddress"
             static let TransportationMode = "transportationMode"
             static let Distance = "distance"
-            static let HTMLInstruction = "htmlIntruction"
+            static let HTMLInstruction = "htmlInstruction"
             static let TransportationVehicleShortName = "transportationVehicleShortName"
             static let TransportationLineColorCode = "transportationLineColorCode"
+            static let TransportationLineHeadSign = "transportationLineHeadSign"
+            static let StartStation = "startStation"
+            static let EndStation = "endStation"
+            static let Duration = "duration"
+            static let StartTime = "startTime"
+            static let EndTime = "endTime"
+            static let Explanations = "explanations"
+            static let StartLocationLat = "startLocationLat"
+            static let StartLocationLng = "startLocationLng"
+            static let EndLocationLat = "endLocationLat"
+            static let EndLocationLng = "endLocationLng"
+            static let Liked = "liked"
         }
         
         struct Response {
@@ -43,7 +56,6 @@ struct API {
             static let Username = "username"
             static let Email = "email"
             static let Password = "password"
-            static let ConfirmPassword = "confirmationPassword"
         }
         struct Key {
             static let Id = "id"
@@ -67,11 +79,40 @@ struct API {
             static let Username = "username"
             static let Email = "email"
             static let Password = "password"
+            static let LikedRoutes = "likedRoutes"
+            static let TravelModePreference = "travelModePreference"
+            static let RouteTypePreference = "routeTypePreference"
         }
         
         struct Response {
             static let Found = 302
         }
+    }
+    struct SetPreferenceEndpoint {
+        static let Path = "\(API.UserEndpoint.Path)setpreference"
+        struct Parameter {
+            static let Id = "id"
+            static let TravelModePreference = "travelModePreference"
+            static let RouteTypePreference = "routeTypePreference"
+        }
+        
+        struct Response {
+            static let CREATED = 201
+        }
+    }
+    struct LikeRouteEndpoint {
+        static let Path = "\(API.UserEndpoint.Path)like"
+        struct Parameter {
+            static let UserId = "userId"
+            static let TargetEntityId = "targetEntityId"
+        }
+        
+        struct Response {
+            static let CREATED = 201
+        }
+    }
+    struct DislikeRouteEndpoint {
+        static let Path = "\(API.UserEndpoint.Path)dislike"
     }
 }
 
@@ -107,6 +148,8 @@ struct Transportation {
     static let Driving = "DRIVING"
     static let Bicycling = "BICYCLING"
     static let Walking = "WALKING"
+    static let RE = "Long distance train"
+    static let ICE = "High speed train"
     static let Modes: [String] = [Bus, Ubahn, Tram, Sbahn, Driving, Bicycling, Walking]
     static let ImagePaths: [String: String] = [Walking: "walking.png",
                                                Bus: "bus.png",
@@ -114,7 +157,23 @@ struct Transportation {
                                                Ubahn: "ubahn.png",
                                                Tram: "tram.png",
                                                Driving: "car.png",
-                                               Bicycling: "bike.png"]
+                                               Bicycling: "bike.png",
+                                               RE: "bahn.png",
+                                               ICE: "bahn.png"
+                                               ]
+}
+
+struct Explanations {
+    static let ImagePaths: [String: String] = ["LIKED": "like-icon.png",
+                                               "HYBRID_RECOMMENDER": "collab-icon.png",
+                                               "POPULARITY": "popular-icon.png",
+                                               "LIKES_PREFERENCES": "like-pref-icon.png",
+                                               "PREFERENCES": "pref-icon.png"]
+}
+
+struct RouteTypePreference {
+    static let LeastChanges = "leastChanges"
+    static let LeastTime = "leastTime"
 }
 
 struct Image {

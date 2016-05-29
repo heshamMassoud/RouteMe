@@ -57,7 +57,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let loggedInId = responseJSON[API.LoginEndpoint.Key.Id] as! String
         let loggedInUsername = responseJSON[API.LoginEndpoint.Key.Username] as! String
         let loggedInEmail = responseJSON[API.LoginEndpoint.Key.Email] as! String
-        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail)
+        let loggedInTravelModePrefs = responseJSON[API.LoginEndpoint.Key.TravelModePreference] as! [String]
+        let loggedInRouteTypePrefs = responseJSON[API.LoginEndpoint.Key.RouteTypePreference] as! [String]
+        let user = User(id: loggedInId, username: loggedInUsername, email: loggedInEmail, travelModePreference: loggedInTravelModePrefs, routeTypePreference: loggedInRouteTypePrefs)
         Helper.loginUser(user, viewController: self)
     }
 
