@@ -595,6 +595,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="00y-eB-vP8">
                                 <rect key="frame" x="14" y="173" width="566" height="378"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a search query" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Puw-QC-PFl">
+                                    <rect key="frame" x="0.0" y="128" width="566" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" red="0.72549019609999998" green="0.27450980390000002" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customcell" rowHeight="100" id="TSZ-6q-yZZ" customClass="RouteSearchResultTableViewCell" customModule="RouteMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="566" height="100"/>
@@ -657,6 +664,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="endPointField" destination="Zba-l5-yaf" id="q35-Zf-531"/>
+                        <outlet property="resultsTableViewStatus" destination="Puw-QC-PFl" id="oaJ-kA-MHU"/>
                         <outlet property="routeResultsTableView" destination="00y-eB-vP8" id="a8o-H7-ZG7"/>
                         <outlet property="startPointField" destination="OpW-KN-xj8" id="ic6-ON-iQg"/>
                         <segue destination="4ch-99-Tx0" kind="show" identifier="showRouteDetailViewSegue" id="Mwu-1N-MoD"/>

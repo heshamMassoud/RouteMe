@@ -12,6 +12,7 @@ import Alamofire
 import SwiftHEXColors
 
 class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextFieldDelegate, InsertAddressOnTextfield, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var resultsTableViewStatus: UILabel!
     @IBOutlet weak var startPointField: UITextField!
     @IBOutlet weak var endPointField: UITextField!
     @IBOutlet weak var routeResultsTableView: UITableView!
@@ -99,6 +100,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     }
 
     func processResultIntoTableView(responseJSON: NSDictionary) {
+        resultsTableViewStatus.hidden = true
         let result = responseJSON[API.SearchEndpoint.Key.RouteResults] as! [Dictionary<String, AnyObject>]
         for route in result {
             var newRoute: Route
