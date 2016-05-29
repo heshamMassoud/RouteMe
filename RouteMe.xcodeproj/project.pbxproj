@@ -22,7 +22,6 @@
 		052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD41CF6608B00DDDB4A /* bus-tab@2x.png */; };
 		052ADDD71CF6608B00DDDB4A /* house-tab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 052ADDD51CF6608B00DDDB4A /* house-tab@2x.png */; };
 		0540992E1CF854C50065444E /* TransitStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0540992D1CF854C50065444E /* TransitStep.swift */; };
-		054099361CF87D390065444E /* like-pref-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 054099311CF87D390065444E /* like-pref-icon.png */; };
 		0540993E1CF896910065444E /* collab-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 054099391CF896910065444E /* collab-icon.png */; };
 		0540993F1CF896910065444E /* like-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0540993A1CF896910065444E /* like-icon.png */; };
 		054099401CF896910065444E /* like-pref-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0540993B1CF896910065444E /* like-pref-icon.png */; };
@@ -41,6 +40,7 @@
 		0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04C1CF3007600ECF9A7 /* leastTime.png */; };
 		0566D0501CF3015000ECF9A7 /* leastChange.png in Resources */ = {isa = PBXBuildFile; fileRef = 0566D04F1CF3015000ECF9A7 /* leastChange.png */; };
 		0566D0521CF3232600ECF9A7 /* SearchRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */; };
+		0599F0E21CFB706B00E65AA3 /* bahn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0599F0E11CFB706B00E65AA3 /* bahn.png */; };
 		05AFCC541CF07C1C00A3D40A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AFCC531CF07C1C00A3D40A /* Helpers.swift */; };
 		05D36A491CF04E3600D65A30 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D36A481CF04E3600D65A30 /* User.swift */; };
 		05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */; };
@@ -106,6 +106,7 @@
 		0566D04C1CF3007600ECF9A7 /* leastTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastTime.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastTime.png"; sourceTree = "<group>"; };
 		0566D04F1CF3015000ECF9A7 /* leastChange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leastChange.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/leastChange.png"; sourceTree = "<group>"; };
 		0566D0511CF3232600ECF9A7 /* SearchRoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoutesViewController.swift; sourceTree = "<group>"; };
+		0599F0E11CFB706B00E65AA3 /* bahn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bahn.png; path = "../../Documents/TUM/Semester 5/Master Thesis/transport-icons/bahn.png"; sourceTree = "<group>"; };
 		05AFCC531CF07C1C00A3D40A /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		05D36A481CF04E3600D65A30 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05D36A4C1CF0727300D65A30 /* seat_routeme.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = seat_routeme.JPG; path = Images.xcassets/seat_routeme.JPG; sourceTree = "<group>"; };
@@ -235,6 +236,7 @@
 		052ADDC11CF61C7000DDDB4A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0599F0E11CFB706B00E65AA3 /* bahn.png */,
 				054099391CF896910065444E /* collab-icon.png */,
 				0540993A1CF896910065444E /* like-icon.png */,
 				0540993B1CF896910065444E /* like-pref-icon.png */,
@@ -465,6 +467,7 @@
 				052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */,
 				052ADDD31CF65DD700DDDB4A /* tab-house@2x.png in Resources */,
 				05DAEE541CEE3B390033AE84 /* city_routeme.jpg in Resources */,
+				0599F0E21CFB706B00E65AA3 /* bahn.png in Resources */,
 				05168E741CF2705E0069AD0E /* xButton.png in Resources */,
 				05D36A4D1CF0727300D65A30 /* seat_routeme.JPG in Resources */,
 				055D64F41CF252D7009008AE /* bike.png in Resources */,
@@ -478,7 +481,6 @@
 				E02347161B677CD3004F2DBE /* Images.xcassets in Resources */,
 				0540993F1CF896910065444E /* like-icon.png in Resources */,
 				0566D04D1CF3007600ECF9A7 /* leastChanges.png in Resources */,
-				054099361CF87D390065444E /* like-pref-icon.png in Resources */,
 				055D64F71CF252D7009008AE /* tram.png in Resources */,
 				054099411CF896910065444E /* popular-icon.png in Resources */,
 				05DAEE531CEE3B390033AE84 /* bus_routeme.jpeg in Resources */,

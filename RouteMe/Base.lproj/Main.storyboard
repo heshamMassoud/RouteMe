@@ -159,7 +159,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next &gt;" id="xLD-5D-2Au">
                             <color key="tintColor" red="0.72549019609999998" green="0.27450980390000002" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="yaK-mu-PKB" kind="show" identifier="allPreferencesSetSegue" id="pUc-6q-yse"/>
+                                <segue destination="yaK-mu-PKB" kind="showDetail" identifier="allPreferencesSetSegue" id="pUc-6q-yse"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -558,7 +558,7 @@
             </objects>
             <point key="canvasLocation" x="586" y="-1197"/>
         </scene>
-        <!--Search Routes View Controller-->
+        <!--Search Routes-->
         <scene sceneID="Zb8-oz-93P">
             <objects>
                 <viewController storyboardIdentifier="searchAddress" id="IMt-iA-hue" customClass="SearchRoutesViewController" customModule="RouteMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -603,11 +603,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="533" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLt-se-EYF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="jLt-se-EYF">
                                                     <rect key="frame" x="8" y="15" width="525" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="525" id="hve-eA-mZc"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -618,6 +615,9 @@
                                                 <constraint firstItem="jLt-se-EYF" firstAttribute="top" secondItem="v4u-mv-P0B" secondAttribute="topMargin" constant="7" id="64V-u2-i6R"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="jLt-se-EYF" secondAttribute="trailing" constant="33" id="HHk-tN-YYU"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="routeSummaryLabel" destination="jLt-se-EYF" id="h9W-3X-2DB"/>
                                         </connections>
@@ -639,7 +639,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="00y-eB-vP8" secondAttribute="trailing" id="tb6-1z-SbD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8ps-uB-5QN"/>
+                    <navigationItem key="navigationItem" title="Search Routes" id="8ps-uB-5QN"/>
                     <connections>
                         <outlet property="endPointField" destination="Zba-l5-yaf" id="q35-Zf-531"/>
                         <outlet property="routeResultsTableView" destination="00y-eB-vP8" id="a8o-H7-ZG7"/>

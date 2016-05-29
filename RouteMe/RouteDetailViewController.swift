@@ -38,7 +38,6 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         likeThisRouteSwitch.tintColor = UIColor(hexString: Style.ColorPallete.RED)
         likeThisRouteSwitch.onTintColor = UIColor(hexString: Style.ColorPallete.RED)
-        self.navigationController?.navigationBar.hidden = true
         
         drawRoutePath(mapView)
         drawMarker(mapView)
