@@ -143,10 +143,18 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
      */
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .Address
+        filter.type = .Geocode
+        // NE Coords: 48.474995, 12.109556
+        // SW Coords: 47.873878, 11.114401
+        let neBoundsCorner = CLLocationCoordinate2D(latitude: 48.474995,
+                                                    longitude: 12.109556)
+        let swBoundsCorner = CLLocationCoordinate2D(latitude: 47.873878,
+                                                    longitude: 11.114401)
+        let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner,
+                                         coordinate: swBoundsCorner)
         filter.country = GoogleMapsAPI.Autocomplete.BiasCountry
         let placeClient = GMSPlacesClient()
-        placeClient.autocompleteQuery(searchText, bounds: nil, filter: filter) { (results, error: NSError?) -> Void in
+        placeClient.autocompleteQuery(searchText, bounds: bounds, filter: filter) { (results, error: NSError?) -> Void in
             self.autocompleteResultsArray.removeAll()
             if results == nil {
                 return
