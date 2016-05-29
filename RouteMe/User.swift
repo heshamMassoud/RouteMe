@@ -36,7 +36,6 @@ class User: NSObject, NSCoding {
         aCoder.encodeObject(id, forKey: "id")
         aCoder.encodeObject(username, forKey: "username")
         aCoder.encodeObject(email, forKey: "email")
-        aCoder.encodeObject(username, forKey: "username")
         aCoder.encodeObject(travelModePreference, forKey: "travelModePreference")
         aCoder.encodeObject(routeTypePreference, forKey: "routeTypePreference")
         
