@@ -241,6 +241,8 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         cell.addSubview(stationsLabel)
         stationsLabel.topAnchor.constraintEqualToAnchor(stepSummaryLabel.bottomAnchor, constant: 7).active = true
         stationsLabel.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 14).active = true
+        stationsLabel.trailingAnchor.constraintEqualToAnchor(cell.trailingAnchor).active = true
+        stationsLabel.adjustsFontSizeToFitWidth = true
         return stationsLabel
     }
     
