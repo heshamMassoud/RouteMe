@@ -42,8 +42,25 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         drawRoutePath(mapView)
         drawMarker(mapView)
         setLikeSwitchState()
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(self.applicationDidEnterBackground(_:)),
+            name: UIApplicationDidEnterBackgroundNotification,
+            object: nil)
     }
     
+    func applicationDidEnterBackground(notification: NSNotification) {
+        triggerRouteLastViewRequest()
+    }
+    
+    
+    func triggerRouteLastViewRequest() {
+        let parameters = [API.TriggerViewLastRouteEndpoint.Parameter.TargetEntityId: route.id,
+                          API.TriggerViewLastRouteEndpoint.Parameter.UserId: loggedInUser.email]
+        Alamofire.request(.POST, API.TriggerViewLastRouteEndpoint.Path, parameters: parameters, encoding:.JSON)
+    }
+
     func setLikeSwitchState() {
         if route.liked {
             likeThisRouteSwitch.on = true;
