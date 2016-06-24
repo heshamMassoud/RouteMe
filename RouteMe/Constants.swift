@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 struct API {
-    static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/"
+    //static let Path = "http://routeme-api.us-east-1.elasticbeanstalk.com/api/"
+    static let Path = "http://192.168.2.4:9000/api/"
+    //static let Path = "http://131.159.197.96:9000/api/"
     struct SearchEndpoint {
         static let Path = "\(API.Path)search"
         struct Parameter {
