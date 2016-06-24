@@ -136,6 +136,7 @@ struct Form {
 
 struct GoogleMapsAPI {
     static let APIKey = "AIzaSyCZk6CWRY-2b1rONt5YKnfqchNxa1F7YiQ"
+    static let APIKey2 = "AIzaSyDOVBOp2cfusJ0e_0ZUm-7kbMyMwuNQMZ0"
     struct Autocomplete {
         static let BiasCountry = "de"
     }
