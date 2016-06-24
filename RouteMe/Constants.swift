@@ -113,6 +113,28 @@ struct API {
             static let CREATED = 201
         }
     }
+    struct TriggerViewRouteEndpoint {
+        static let Path = "\(API.UserEndpoint.Path)view"
+        struct Parameter {
+            static let UserId = "userId"
+            static let TargetEntityId = "targetEntityId"
+        }
+        
+        struct Response {
+            static let CREATED = 201
+        }
+    }
+    struct TriggerViewLastRouteEndpoint {
+        static let Path = "\(API.UserEndpoint.Path)viewlast"
+        struct Parameter {
+            static let UserId = "userId"
+            static let TargetEntityId = "targetEntityId"
+        }
+        
+        struct Response {
+            static let CREATED = 201
+        }
+    }
     struct DislikeRouteEndpoint {
         static let Path = "\(API.UserEndpoint.Path)dislike"
     }
