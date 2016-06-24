@@ -229,7 +229,7 @@ struct Style {
         static let RouteDetailCells: CGFloat = 100.0
         static let RouteDetailMapView: CGFloat = 200
         static let LikeSectionVerticalPadding: CGFloat = 14
-        static let RouteSearchResultsCells: CGFloat = 128.0
+        static let RouteSearchResultsCells: CGFloat = 135.0
     }
     
     struct HTML {

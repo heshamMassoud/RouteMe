@@ -357,9 +357,9 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         label.adjustsFontSizeToFitWidth = true
         
         cell.addSubview(label)
-        label.topAnchor.constraintEqualToAnchor(imageView.bottomAnchor, constant: 19).active=true
-        label.leadingAnchor.constraintEqualToAnchor(explanationImage.trailingAnchor, constant: 7).active = true
         label.trailingAnchor.constraintEqualToAnchor(cell.trailingAnchor, constant: -30).active = true
+        label.topAnchor.constraintEqualToAnchor(explanationImage.bottomAnchor, constant: 7).active=true
+        label.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 7).active = true
         label.sizeToFit()
         
     }
