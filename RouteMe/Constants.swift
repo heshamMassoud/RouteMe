@@ -94,6 +94,7 @@ struct API {
         static let Path = "\(API.UserEndpoint.Path)setpreference"
         struct Parameter {
             static let Id = "id"
+            static let Email = "email"
             static let TravelModePreference = "travelModePreference"
             static let RouteTypePreference = "routeTypePreference"
         }
