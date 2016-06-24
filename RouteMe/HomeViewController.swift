@@ -24,9 +24,16 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        let isLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
-        if (!isLoggedIn) {
+        processLoggedInUser()
+    }
+    
+    func processLoggedInUser() {
+        if (Helper.isUserLoggedIn()) {
+            let loggedInUsername = Helper.getLoggedInUser().username
+            usernameLabel.text = loggedInUsername;
+        } else {
             Helper.redirectToViewController(self, targetViewControllerId: "Login", animated: false)
+
         }
     }
     
