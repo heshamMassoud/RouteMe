@@ -57,6 +57,7 @@ class RouteTypePreferenceViewController: UIViewController {
         routeTypePreference[leastTimePreference] = RouteTypePreference.LeastTime
         routeTypePreference[leastChangesPreference] = RouteTypePreference.LeastChanges
         let parameters = [API.SetPreferenceEndpoint.Parameter.Id: loggedInUser.id,
+                          API.SetPreferenceEndpoint.Parameter.Email: loggedInUser.email,
                           API.SetPreferenceEndpoint.Parameter.TravelModePreference: transportationModePreference,
                           API.SetPreferenceEndpoint.Parameter.RouteTypePreference: routeTypePreference]
         Alamofire.request(
