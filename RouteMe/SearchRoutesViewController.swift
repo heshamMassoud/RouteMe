@@ -314,10 +314,19 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         return label
     }
 
+
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if  segue.identifier == "showRouteDetailViewSegue", let destination = segue.destinationViewController as? RouteDetailViewController, routeIndex = routeResultsTableView.indexPathForSelectedRow?.row {
             destination.route = searchResultsArray[routeIndex]
+            triggerRouteViewRequest(destination.route.id)
         }
+    }
+    
+    func triggerRouteViewRequest(routeId: String) {
+        let parameters = [API.TriggerViewRouteEndpoint.Parameter.TargetEntityId: routeId,
+                          API.TriggerViewRouteEndpoint.Parameter.UserId: loggedInUser.email]
+        Alamofire.request(.POST, API.TriggerViewRouteEndpoint.Path, parameters: parameters, encoding:.JSON)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
