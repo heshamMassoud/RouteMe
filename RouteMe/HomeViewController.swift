@@ -34,12 +34,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         self.view.addBackground(Image.Background.Home)
-        if (Helper.isUserLoggedIn()) {
-            let loggedInUsername = Helper.getLoggedInUser().username
-            usernameLabel.text = loggedInUsername;
-        }
+        
         // Do any additional setup after loading the view.
     }
     
