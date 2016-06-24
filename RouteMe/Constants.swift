@@ -168,7 +168,16 @@ struct Explanations {
                                                "HYBRID_RECOMMENDER": "collab-icon.png",
                                                "POPULARITY": "popular-icon.png",
                                                "LIKES_PREFERENCES": "like-pref-icon.png",
-                                               "PREFERENCES": "pref-icon.png"]
+                                               "PREFERENCES": "pref-icon.png",
+                                               "HYBRID_RECOMMENDER_LIKED": "collab-icon.png",
+                                               "POPULARITY_LIKED": "popular-icon.png"]
+    static let text: [String: String] = ["LIKED": "You've shown interest in this route",
+                                               "HYBRID_RECOMMENDER": "Users similar to you show interest in this route",
+                                               "POPULARITY": "This route is quite popular in the area",
+                                               "LIKES_PREFERENCES": "You've shown interest in this route",
+                                               "POPULARITY_LIKED": "You've shown interest in this route. It's also quite a popular route",
+                                               "HYBRID_RECOMMENDER_LIKED": "You and users similar to you have shown interest in this route",
+                                               "PREFERENCES": "This route is ranked here based on your travel preferences"]
 }
 
 struct RouteTypePreference {
