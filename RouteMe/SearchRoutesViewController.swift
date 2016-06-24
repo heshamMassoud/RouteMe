@@ -229,7 +229,18 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         } else {
             lastAddedView = addTransitTransportationModeContentsToCell(cell, routeSteps: currentRoute.transitSteps)
         }
-        addExplanationImageToCell(cell, lastAddedView: lastAddedView, explanation: currentRoute.explanation)
+        var lastExplanationImage: UIImageView = UIImageView()
+        if currentRoute.liked {
+            lastExplanationImage = addLikedImageToCell(cell, lastAddedView: lastAddedView)
+        }
+
+        if !currentRoute.explanation.isEmpty {
+            lastExplanationImage = addExplanationImageToCell(cell, lastAddedView: lastAddedView, likedImage: lastExplanationImage, isLiked: currentRoute.liked, explanation: currentRoute.explanation)
+        }
+
+        if currentRoute.liked || !currentRoute.explanation.isEmpty {
+            addExplanationTextToCell(cell, imageView: lastAddedView, explanationImage: lastExplanationImage, explanation: currentRoute.explanation)
+        }
         
     }
     
@@ -238,19 +249,6 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         let cellBackground = UIView()
         cellBackground.backgroundColor = UIColor(hexString: Style.ColorPallete.Blue)
         cell.selectedBackgroundView = cellBackground
-    }
-    
-    func addExplanationImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView, explanation: String) {
-        let imagePath = Explanations.ImagePaths[explanation]
-        let image = UIImage(named: imagePath!)
-        let imageView = UIImageView(image: image!)
-        cell.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
-        imageView.widthAnchor.constraintEqualToConstant(28).active = true
-        imageView.heightAnchor.constraintEqualToConstant(28).active = true
-        imageView.leadingAnchor.constraintEqualToAnchor(lastAddedView.trailingAnchor, constant: 14).active = true
-        
     }
 
     func addNonTransitTransportationModeImageToCell(cell: RouteSearchResultTableViewCell, transportationMode: String) -> UIView {
@@ -270,6 +268,27 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
             previousLabel = transportationShortNameLabel as UILabel
         }
         return previousLabel as! UIView
+    }
+    
+    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, transportationImageView: UIImageView) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let transportationVehicleShortName = step.transportationVehicleShortName
+        label.text = transportationVehicleShortName
+        
+        let transportationLineColorCode = step.transportationLineColorCode
+        if transportationLineColorCode != "" {
+            label.backgroundColor = UIColor(hexString: transportationLineColorCode)
+            label.textColor = UIColor.whiteColor()
+            label.layer.cornerRadius = 2.0
+            label.clipsToBounds = true
+        }
+        cell.addSubview(label)
+        label.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
+        label.heightAnchor.constraintEqualToConstant(28).active = true
+        label.leadingAnchor.constraintEqualToAnchor(transportationImageView.trailingAnchor, constant: 3).active = true
+        label.sizeToFit()
+        return label
     }
 
     func addTransitTransportationImageToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, isFirstStep: Bool, previousLabel: AnyObject?) -> UIImageView {
@@ -292,26 +311,57 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         }
         return imageView
     }
-
-    func addLineShortNameLabelToCell(cell: RouteSearchResultTableViewCell, step: TransitStep, transportationImageView: UIImageView) -> UILabel {
+    
+    func addExplanationImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView, likedImage: UIImageView, isLiked: Bool, explanation: String) -> UIImageView {
+        let imagePath = Explanations.ImagePaths[explanation]
+        let image = UIImage(named: imagePath!)
+        let imageView = UIImageView(image: image!)
+        cell.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        //imageView.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
+        imageView.widthAnchor.constraintEqualToConstant(28).active = true
+        imageView.heightAnchor.constraintEqualToConstant(28).active = true
+        //imageView.leadingAnchor.constraintEqualToAnchor(lastAddedView.trailingAnchor, constant: 14).active = true
+        
+        imageView.topAnchor.constraintEqualToAnchor(lastAddedView.bottomAnchor, constant: 7).active=true
+        if isLiked {
+            imageView.leadingAnchor.constraintEqualToAnchor(likedImage.trailingAnchor, constant: 7).active = true
+        } else {
+            imageView.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 7).active = true
+        }
+        return imageView
+        
+    }
+    
+    func addLikedImageToCell(cell: RouteSearchResultTableViewCell, lastAddedView: UIView) -> UIImageView {
+        let imagePath = Explanations.ImagePaths["LIKED"]
+        let image = UIImage(named: imagePath!)
+        let imageView = UIImageView(image: image!)
+        cell.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraintEqualToConstant(28).active = true
+        imageView.heightAnchor.constraintEqualToConstant(28).active = true
+        
+        imageView.topAnchor.constraintEqualToAnchor(lastAddedView.bottomAnchor, constant: 7).active=true
+        imageView.leadingAnchor.constraintEqualToAnchor(cell.leadingAnchor, constant: 7).active = true
+        return imageView
+    }
+    
+    func addExplanationTextToCell(cell: RouteSearchResultTableViewCell, imageView: UIView, explanationImage: UIImageView, explanation: String) {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let transportationVehicleShortName = step.transportationVehicleShortName
-        label.text = transportationVehicleShortName
-
-        let transportationLineColorCode = step.transportationLineColorCode
-        if transportationLineColorCode != "" {
-            label.backgroundColor = UIColor(hexString: transportationLineColorCode)
-            label.textColor = UIColor.whiteColor()
-            label.layer.cornerRadius = 2.0
-            label.clipsToBounds = true
-        }
+        label.text = Explanations.text[explanation]
+        label.font = UIFont.italicSystemFontOfSize(10)
+        
+        label.textColor = UIColor(hexString: Style.ColorPallete.RED)
+        label.adjustsFontSizeToFitWidth = true
+        
         cell.addSubview(label)
-        label.topAnchor.constraintEqualToAnchor(cell.topAnchor, constant: 47).active=true
-        label.heightAnchor.constraintEqualToConstant(28).active = true
-        label.leadingAnchor.constraintEqualToAnchor(transportationImageView.trailingAnchor, constant: 3).active = true
+        label.topAnchor.constraintEqualToAnchor(imageView.bottomAnchor, constant: 19).active=true
+        label.leadingAnchor.constraintEqualToAnchor(explanationImage.trailingAnchor, constant: 7).active = true
+        label.trailingAnchor.constraintEqualToAnchor(cell.trailingAnchor, constant: -30).active = true
         label.sizeToFit()
-        return label
+        
     }
 
 
