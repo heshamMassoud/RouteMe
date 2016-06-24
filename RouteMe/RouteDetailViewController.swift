@@ -220,17 +220,40 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
         headsignLabel.translatesAutoresizingMaskIntoConstraints = false
         headsignLabel.font = Style.Font.RouteDetailCells
         cell.addSubview(headsignLabel)
-        headsignLabel.leadingAnchor.constraintEqualToAnchor(vehicleImageView.trailingAnchor, constant: 4).active = true
         return headsignLabel
     }
     
     func addTransitRouteCellContents(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel, vehicleImageView: UIImageView, headsignLabel: UILabel) {
         let stationsLabel = addStationsLabel(cell, stepIndex: stepIndex, stepSummaryLabel: stepSummaryLabel)
+        let lineNameLabel = addLineName(cell, stepIndex: stepIndex, vehicleImageView: vehicleImageView)
+        
+        lineNameLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
         vehicleImageView.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 10).active=true
         headsignLabel.topAnchor.constraintEqualToAnchor(stationsLabel.bottomAnchor, constant: 17).active=true
+        headsignLabel.leadingAnchor.constraintEqualToAnchor(lineNameLabel.trailingAnchor, constant: 4).active = true
+        
         let transitStepSummary = "\(route.transitSteps[stepIndex].startTime)-\(route.transitSteps[stepIndex].endTime) (\(route.transitSteps[stepIndex].duration))"
         stepSummaryLabel.text = transitStepSummary
         headsignLabel.text = route.transitSteps[stepIndex].transportationLineHeadSign
+    }
+    
+    func addLineName(cell: UITableViewCell, stepIndex: Int, vehicleImageView: UIImageView)  -> UILabel {
+        let lineNameLabel = UILabel()
+        lineNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        lineNameLabel.font = Style.Font.RouteDetailCells
+        lineNameLabel.text = route.transitSteps[stepIndex].transportationVehicleShortName
+        let transportationLineColorCode = route.transitSteps[stepIndex].transportationLineColorCode
+        if transportationLineColorCode != "" {
+            lineNameLabel.backgroundColor = UIColor(hexString: transportationLineColorCode)
+            lineNameLabel.textColor = UIColor.whiteColor()
+            lineNameLabel.layer.cornerRadius = 2.0
+            lineNameLabel.clipsToBounds = true
+        }
+        cell.addSubview(lineNameLabel)
+        lineNameLabel.heightAnchor.constraintEqualToConstant(28).active = true
+        lineNameLabel.leadingAnchor.constraintEqualToAnchor(vehicleImageView.trailingAnchor, constant: 3).active = true
+        lineNameLabel.sizeToFit()
+        return lineNameLabel
     }
     
     func addStationsLabel(cell: UITableViewCell, stepIndex: Int, stepSummaryLabel: UILabel) -> UILabel{
@@ -250,6 +273,7 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
                                        headsignLabel: UILabel, routeStep: AnyObject) {
         vehicleImageView.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -10.5).active=true
         headsignLabel.bottomAnchor.constraintEqualToAnchor(cell.bottomAnchor, constant: -14).active=true
+        headsignLabel.leadingAnchor.constraintEqualToAnchor(vehicleImageView.trailingAnchor, constant: 4).active = true
         let currentRouteStepDistance = routeStep[API.SearchEndpoint.Key.Distance] as! String
         let currentRouteStepHTMLInstruction = routeStep[API.SearchEndpoint.Key.HTMLInstruction] as! String
         setHTMLInstructionLabelText(stepSummaryLabel, htmlInstruction: currentRouteStepHTMLInstruction)
