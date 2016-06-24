@@ -28,7 +28,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let isFormValid = validateSignUpForm(email!, username: username!, password: password!, confirmPassword: confirmPassword!)
         if isFormValid {
-            createUserRequest(email!, username: username!, password: password!)
+            let alert = UIAlertController(title: "Notice", message: "We keep track of all your interactions with the app. This includes route views, search queries, etc.. In order to provide personalised route recommendations for you as accurate as possible.", preferredStyle: UIAlertControllerStyle.Alert);
+            let okButton = UIAlertAction(title: "Accept", style: .Default, handler: { (action: UIAlertAction!) in
+                self.createUserRequest(email!, username: username!, password: password!)
+            })
+            let cancelButton = UIAlertAction(title: "Decline", style: .Cancel, handler: { (action: UIAlertAction!) in })
+            alert.addAction(okButton)
+            alert.addAction(cancelButton)
+            showViewController(alert, sender: self);
         }
     }
 
