@@ -50,6 +50,8 @@
 		05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */; };
 		05DAEE581CEE3BC50033AE84 /* tram_routeme_5s.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */; };
 		05DAEE5A1CEE3C770033AE84 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DAEE591CEE3C770033AE84 /* Utils.swift */; };
+		05E3DB701D16207500819ABE /* RouteMe-1024x1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05E3DB6F1D16207500819ABE /* RouteMe-1024x1024.jpg */; };
+		05E3DB721D1620EA00819ABE /* RouteMe_launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05E3DB711D1620EA00819ABE /* RouteMe_launch.jpg */; };
 		62B1A55AA7F5D9438D1167B5 /* Pods_RouteMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E54A0AEC58BBEB4AE0A3AA5 /* Pods_RouteMe.framework */; };
 		E023470F1B677CD3004F2DBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E023470E1B677CD3004F2DBE /* AppDelegate.swift */; };
 		E02347141B677CD3004F2DBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E02347121B677CD3004F2DBE /* Main.storyboard */; };
@@ -116,6 +118,8 @@
 		05DAEE521CEE3B390033AE84 /* tram_routeme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tram_routeme.jpeg; path = Images.xcassets/tram_routeme.jpeg; sourceTree = "<group>"; };
 		05DAEE571CEE3BC50033AE84 /* tram_routeme_5s.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = tram_routeme_5s.jpeg; path = Images.xcassets/tram_routeme_5s.jpeg; sourceTree = "<group>"; };
 		05DAEE591CEE3C770033AE84 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		05E3DB6F1D16207500819ABE /* RouteMe-1024x1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "RouteMe-1024x1024.jpg"; path = "../../Documents/TUM/Semester 5/Master Thesis/RouteMe-1024x1024.jpg"; sourceTree = "<group>"; };
+		05E3DB711D1620EA00819ABE /* RouteMe_launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = RouteMe_launch.jpg; path = "../../Documents/TUM/Semester 5/Master Thesis/RouteMe_launch.jpg"; sourceTree = "<group>"; };
 		1088CFE500C797330DD85800 /* Pods-RouteMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteMe/Pods-RouteMe.release.xcconfig"; sourceTree = "<group>"; };
 		9E54A0AEC58BBEB4AE0A3AA5 /* Pods_RouteMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E02347091B677CD3004F2DBE /* RouteMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +240,8 @@
 		052ADDC11CF61C7000DDDB4A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				05E3DB6F1D16207500819ABE /* RouteMe-1024x1024.jpg */,
+				05E3DB711D1620EA00819ABE /* RouteMe_launch.jpg */,
 				0599F0E11CFB706B00E65AA3 /* bahn.png */,
 				054099391CF896910065444E /* collab-icon.png */,
 				0540993A1CF896910065444E /* like-icon.png */,
@@ -422,6 +428,7 @@
 				TargetAttributes = {
 					E02347081B677CD3004F2DBE = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 7PLLZ436SG;
 					};
 					E023471D1B677CD3004F2DBE = {
 						CreatedOnToolsVersion = 6.4;
@@ -458,11 +465,13 @@
 				05DAEE581CEE3BC50033AE84 /* tram_routeme_5s.jpeg in Resources */,
 				052ADDC41CF6335D00DDDB4A /* hourglass.png in Resources */,
 				0566D04E1CF3007600ECF9A7 /* leastTime.png in Resources */,
+				05E3DB721D1620EA00819ABE /* RouteMe_launch.jpg in Resources */,
 				E02347141B677CD3004F2DBE /* Main.storyboard in Resources */,
 				052ADDD21CF65DD700DDDB4A /* tab-bus@2x.png in Resources */,
 				05DAEE561CEE3B390033AE84 /* tram_routeme.jpeg in Resources */,
 				05168E751CF2705E0069AD0E /* checkButton.png in Resources */,
 				E02347191B677CD3004F2DBE /* LaunchScreen.xib in Resources */,
+				05E3DB701D16207500819ABE /* RouteMe-1024x1024.jpg in Resources */,
 				055D64F61CF252D7009008AE /* car.png in Resources */,
 				052ADDD61CF6608B00DDDB4A /* bus-tab@2x.png in Resources */,
 				052ADDD31CF65DD700DDDB4A /* tab-house@2x.png in Resources */,
@@ -698,6 +707,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -707,6 +718,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heshammassoud.Routeme;
 				PRODUCT_NAME = RouteMe;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -716,6 +728,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -725,6 +739,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heshammassoud.Routeme;
 				PRODUCT_NAME = RouteMe;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
