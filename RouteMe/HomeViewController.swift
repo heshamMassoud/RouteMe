@@ -19,6 +19,9 @@ class HomeViewController: UIViewController {
     @IBAction func searchAction(sender: AnyObject) {
         Helper.redirectToViewController(self, targetViewControllerId: "PreferencesNav", animated: true)
     }
+    
+    @IBAction func unwindToHomeView(segue: UIStoryboardSegue) {
+    }
 
     override func viewWillAppear(animated: Bool) {
         let isLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isLoggedIn")
