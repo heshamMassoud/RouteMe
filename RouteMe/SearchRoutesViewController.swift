@@ -16,6 +16,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
     @IBOutlet weak var startPointField: UITextField!
     @IBOutlet weak var endPointField: UITextField!
     @IBOutlet weak var routeResultsTableView: UITableView!
+    var loggedInUser: User = User()
 
     @IBAction func startPointEnterAction(sender: AnyObject) {
         isEditingStart = true
@@ -54,6 +55,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
         setTextFieldsBottomBorders()
         self.view.backgroundColor = UIColor(hexString: Style.ColorPallete.GREY)
         styleSearchFieldsText()
+        loggedInUser = Helper.getLoggedInUser()
         // Do any additional setup after loading the view.
     }
     
@@ -71,7 +73,7 @@ class SearchRoutesViewController: UIViewController, UISearchBarDelegate, UITextF
 
     func searchRequest(startPoint: String, endPoint: String) {
         let spinnerFrame: UIView = self.view.startASpinner()
-        let loggedInUser = Helper.getLoggedInUser()
+        
         let parameters = [API.SearchEndpoint.Parameter.StartPoint: startPoint,
                           API.SearchEndpoint.Parameter.EndPoint: endPoint,
                           API.SearchEndpoint.Parameter.UserId: loggedInUser.id]

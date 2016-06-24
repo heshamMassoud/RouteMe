@@ -13,6 +13,7 @@ import Alamofire
 class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var route: Route = Route()
+    let loggedInUser = Helper.getLoggedInUser()
     
     @IBOutlet weak var likeThisRouteLabel: UILabel!
     @IBOutlet weak var likeThisRouteSwitch: UISwitch!
@@ -77,7 +78,6 @@ class RouteDetailViewController: UIViewController, UITableViewDelegate, UITableV
             endPointPath = API.DislikeRouteEndpoint.Path
         }
         let spinnerFrame: UIView = self.view.startASpinner()
-        let loggedInUser = Helper.getLoggedInUser()
         let parameters = [API.LikeRouteEndpoint.Parameter.UserId: loggedInUser.id,
                           API.LikeRouteEndpoint.Parameter.TargetEntityId: route.id]
         Alamofire.request(

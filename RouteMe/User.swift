@@ -23,6 +23,12 @@ class User: NSObject, NSCoding {
         self.routeTypePreference = routeTypePreference
     }
     
+    override init() {
+        self.id = ""
+        self.username = ""
+        self.email = ""
+    }
+    
     required convenience init(coder aDecoder: NSCoder) {
         let id = aDecoder.decodeObjectForKey("id") as! String
         let username = aDecoder.decodeObjectForKey("username") as! String
